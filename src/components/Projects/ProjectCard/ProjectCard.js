@@ -8,6 +8,8 @@ import {
   BtnGroup,
 } from "./ProjectCardElements";
 import Description from "./description";
+import github from "../../../Assets/github.png"
+import hf from "../../../Assets/hf.png"
 
 function ProjectCard() {
   return (
@@ -28,14 +30,30 @@ function ProjectCard() {
               })}
             </Label>
             <BtnGroup>
+            <>
+            {list.github_url &&
               <a
                 className="btn btn2 SecondarBtn"
                 href={list.github_url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Github
+
+                <img src={github} style={{"width":"30px"}}/>
               </a>
+              }
+              {list.hf &&
+              <a
+                className="btn btn2 SecondarBtn"
+                href={list.hf}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+
+                <img src={hf} style={{"width":"30px"}}/>
+              </a>
+              }
+            </>
               <Description proj={list.id_proj}/>
             </BtnGroup>
           </CardRight>

@@ -59,11 +59,22 @@ export const HeroLeft = styled.div`
     font-weight: 400;
   }
 
-  p {
+  .p1 {
     font-size: 17px;
     color: #f6f6f1;
     opacity: 0.85;
     text-decoration: underline;
+  }
+
+  .p2{
+    margin-top:10px;
+    font-size: 20px;
+    color: #f6f6f1;
+    opacity: 0.85;
+  }
+
+  .description{
+    color: #e33fa4;
   }
 
   @media screen and (max-width: 992px) {

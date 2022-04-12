@@ -15,6 +15,19 @@ import sample_poster from '../../../Assets/sample.png';
 
 import Few from './few.js'
 
+import art1 from "../../../Assets/fabric_of_art.png"
+import art2 from "../../../Assets/fabric_of_art2.png"
+import art3 from "../../../Assets/factory_of_art.png"
+import art4 from "../../../Assets/hate.png"
+import art5 from "../../../Assets/hate2.png"
+import art6 from "../../../Assets/hatedeepblueeyes.png"
+import art7 from "../../../Assets/elephant.png"
+import art8 from "../../../Assets/imnothere2.png"
+import art9 from "../../../Assets/blueeyedfrancaisette.png"
+import art10 from "../../../Assets/londonpunk3.png"
+import art11 from "../../../Assets/londonpunk23.png"
+import art12 from "../../../Assets/milanpunk3.png"
+
 class Description extends React.Component {
 
   state = {
@@ -101,6 +114,16 @@ class Description extends React.Component {
               </Row>
               </div>
             }
+            {this.props.proj=="semantic" &&
+            <div className="modal_content">
+              <p className="proj_title">Computer-Assisted Solr Query Generation</p>
+              <hr/>
+              <p>Challenge at the IX session at PiSchool, with fellows Ramesh Sampath and Priyanshu Sinha.</p>
+              <hr/>
+              <Row>
+                https://www.youtube.com/watch?v=_OLvVG0Y9nY&t=1981s
+              </Row>
+            </div>}
             {this.props.proj=="nonlinear" &&
             <div className="modal_content">
               <p className="proj_title">Nonlinear climbing video indexing</p>
@@ -110,8 +133,7 @@ class Description extends React.Component {
               <Row>
               <p>
               Human Pose Estimation is one of the most promising research area in the
-              field that links together Artificial Intelligence and Computer Vision. Its appli-
-              cations are countless since it mimics one of the principal human capabilities:
+              field that links together Artificial Intelligence and Computer Vision. Its applications are countless since it mimics one of the principal human capabilities:
               understanding the physical space that surrounds us, and the interaction of
               the context with people. Sport is the field that can most benefit from this
               technology since it involves dynamic movements of individuals. The project is the research and the development of a fully-working application
@@ -157,24 +179,87 @@ class Description extends React.Component {
             </div>}
             {this.props.proj=="dante" &&
             <div className="modal_content">
-              <p className="proj_title">DanteBert</p>
+              <p className="proj_title">Dantesque Transformer</p>
               <hr/>
-              <p>Experiment mixing technical tools with art, most recent research in NLP and past literature.</p>
+              <p>Experiment mixing technical tools with art, most recent research in NLP and past literature. Code name <i>forma-locutionis</i></p>
               <hr/>
               <Row>
                 <p>
-                I've finetuned a Bert model, provided by HuggingFace, with a corpus containing all the literature production of Dante, build up by me.
+                I've finetuned a GPT-2 model, provided by HuggingFace, with a corpus containing all the literature production of Dante, build up by me.
                 The aim of the project was to find out which features of Dante's production the transformer model was able to extract. It seems that the model, pretrained with
-                a huge italian corpus, is able to imitate Dante style with a fine tuning. The experiment is still at the beginning, and it's going on!
+                a huge italian corpus, is able to imitate Dante style with a fine tuning. The resuts are improved with some semantic corrections. The experiment is still on going!
                 </p>
                 <Row className="justify-content-center">
-                <Col xs={12} sm={12} md={6} lg={5} xl={3} className="info">
-                <a className="input">Input:</a>  E colei che amai
-                </Col>
-                <Col xs={12} sm={12} md={6} lg={6} xl={6} className="info">
-                <a className="input">Result:</a> E colei che amai <i>uopo più si vuoli, d’altrui lume già bianche e fioche, quasi come piante novelle rinognate per l’acqua fosser pronte.e disse: Piglia quel seme a li occhi; volgi ’l viso, e fammi nota la larghezza di questa nutrice».S’el s’aunasse ancor tutta la gente che già, in su la fortunata terra di Puglia, fu del suo sangue</i>
+                <Col xs={12} sm={12} md={12} lg={12} xl={12} className="info">
+                You can play with the model on HuggingFace's Space <a target="_blank"
+        rel="noopener noreferrer" href="https://huggingface.co/spaces/Daniele/forma-locutionis">HERE</a>
                 </Col>
                 </Row>
+              </Row>
+            </div>}
+            {this.props.proj=="spell" &&
+            <div className="modal_content">
+              <p className="proj_title">Italian Spellchecker - T5</p>
+              <hr/>
+              <p>Spellchecker for Italian language, built on top of a T5 model.</p>
+              <hr/>
+              <Row>
+                <p>
+                The model is built on top of a T5 model finetuned on Italian language by <a target="_blank"
+        rel="noopener noreferrer" href="https://gsarti.com/">Gabriele Sarti</a>.
+                The first step was the construction of the dataset: I took a list of 60k Italian phrases, and add two types of random noises: removing or the exchange of a letter in the phrase. The final dataset was made of 240k couples <i>mispelled phrase - correct phrase</i>.
+                Then I finetuned again the iT5 model, adding some tokens to optimize the seq2seq task.
+                The model is available on <a target="_blank"
+        rel="noopener noreferrer" href="https://huggingface.co/Daniele/italian-spellchecker">HuggingFace Hub</a>.
+                </p>
+              </Row>
+            </div>}
+            {this.props.proj=="dreams" &&
+            <div className="modal_content">
+              <p className="proj_title">AI-driven art</p>
+              <hr/>
+              <p>All images here are generated using deep neural networks, starting from a textual description. The pipeline used is a combination of VQGAN and OpenAI's CLIP.</p>
+              <hr/>
+              <Row>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'right'}}>
+              <img src={art1} className="art_images"/>
+              </Col>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'center'}}>
+              <img src={art2} className="art_images"/>
+              </Col>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'left'}}>
+              <img src={art3} className="art_images"/>
+              </Col>
+              <hr/>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'right'}}>
+              <img src={art4} className="art_images"/>
+              </Col>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'center'}}>
+              <img src={art5} className="art_images"/>
+              </Col>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'left'}}>
+              <img src={art6} className="art_images"/>
+              </Col>
+              <hr/>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'right'}}>
+              <img src={art7} className="art_images"/>
+              </Col>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'center'}}>
+              <img src={art8} className="art_images"/>
+              </Col>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'left'}}>
+              <img src={art9} className="art_images"/>
+              </Col>
+              <hr/>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'right'}}>
+              <img src={art10} className="art_images"/>
+              </Col>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'center'}}>
+              <img src={art11} className="art_images"/>
+              </Col>
+              <Col xs={12} sm={12} md={4} lg={4} xl={4} style={{marginBottom: "5px", padding: "5px", display:'flex', justifyContent:'left'}}>
+              <img src={art12} className="art_images"/>
+              </Col>
               </Row>
             </div>}
             <a

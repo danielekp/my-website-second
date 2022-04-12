@@ -29,6 +29,12 @@ a {
   background-color: transparent;
 }
 
+.art_images{
+  height: auto;
+  width: auto;
+
+}
+
 ul,
 ol {
   list-style: none;

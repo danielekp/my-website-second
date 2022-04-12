@@ -22,7 +22,7 @@ function About() {
           <div className="AboutBio">
           </div>
           <div className="AboutBio">
-           Possibly <a href="daniele_pace_resume.pdf" download className="resume"> Resume </a>
+           I'm trying to figure it out. In the meantime the <a href="daniele_pace_resume.pdf" download className="resume"> Resume </a>
           </div>
           <Technologies>
             {stackList.map((stack, index) => (

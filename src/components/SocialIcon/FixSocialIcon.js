@@ -19,7 +19,7 @@ const Social = styled.div`
 
   img {
     width: 50px;
-    opacity: 0.3;
+    opacity: 0.5;
     transition: 0.1s ease-in;
     &:hover {
       opacity: 1

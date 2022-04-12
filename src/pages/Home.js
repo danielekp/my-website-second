@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "../components/Hero/Hero";
+import Hero from "../components/Hero/Hero2";
 import Projects from "../components/Projects/Projects";
 import About from "../components/About/About";
 import Contact from "../components/Contact/Contact";
@@ -12,7 +12,6 @@ function Home() {
       <Projects />
       <About />
       <Contact />
-      <Footer />
       <FixSocialIcon />
     </>
   );

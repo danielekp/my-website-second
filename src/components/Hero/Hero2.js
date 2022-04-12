@@ -10,6 +10,7 @@ import {
   Image,
   ScrollDown,
 } from "./HeroElements";
+import cecinepas from '../../Assets/nepas.png'
 
 function Hero() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,26 +22,13 @@ function Hero() {
     <main>
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Header toggle={toggle} />
+      <div style={{"backgroundColor": "#fafaff"}}>
       <HeroContainer>
         <HeroWrapper>
-        
-          <HeroLeft>
-            <h1></h1>
-            <h5>Artificial Intelligence wit attitudes</h5>
-            <p className="p1">
-              <a href="https://www.technologyreview.com/2019/03/02/65994/ai-ethics-mit-college-of-computing-tech-humanities/">
-                There’s no such thing as a “tech person” in the age of AI
-              </a>
-            </p>
-          </HeroLeft>
-          <HeroRight>
-            <Image
-              src={attitudes}
-              alt="wit-attitudes"
-            />
-          </HeroRight>
+        <img src={cecinepas}/>
         </HeroWrapper>
       </HeroContainer>
+      </div>
     </main>
   );
 }

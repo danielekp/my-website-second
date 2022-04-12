@@ -60,7 +60,7 @@ export const Label = styled.div`
   align-items: center;
   margin-bottom: 5px;
 
-  .DeepLearning {
+  .AI{
     border-radius: 10px;
     margin-right: 4px;
     padding: 10px;
@@ -72,7 +72,7 @@ export const Label = styled.div`
     border-style: solid;
   }
 
-  .DeepLearning:hover{
+  .AI:hover{
     opacity: 0.8
   }
 
