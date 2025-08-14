@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Nonlinear Climbing Video Indexing" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    
+    <title>Nonlinear Climbing Video Indexing</title>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+                    <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+                </ul>
+                <div class="menu-bars" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="close-icon" id="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-menu">
+            <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+            <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+        </ul>
+    </div>
+
+    <!-- Project Content -->
+    <section class="project-details">
+        <div class="container">
+            <div class="back-link">
+                <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            </div>
+            
+            <div class="project-header">
+                <h1>Nonlinear Climbing Video Indexing</h1>
+                <div class="project-meta">
+                    <span class="project-date">Master Thesis</span>
+                    <span class="project-type">Aalto University, supervised by <a href="https://users.aalto.fi/~lehtinj7/">Jaakko Lehtinen</a></span>
+                </div>
+            </div>
+            
+            <div class="project-content">
+                
+                <h2>Overview</h2>
+                <p>
+                    Human Pose Estimation is one of the most promising research areas in the
+                    field that links together Artificial Intelligence and Computer Vision. Its applications are countless since it mimics one of the principal human capabilities:
+                    understanding the physical space that surrounds us, and the interaction of
+                    the context with people. Sport is the field that can most benefit from this
+                    technology since it involves dynamic movements of individuals.
+                </p>
+                
+                <h2>Project Description</h2>
+                <p>
+                    The project is the research and development of a fully-working application
+                    that exploits human pose estimation to perform <span class="keywords">nonlinear queries</span> to retrieve
+                    the exact pose and movements that the user is looking for. I applied this
+                    framework to climbing, in which the training phase involves mostly figuring out
+                    how to perform a certain pose by looking at how other climbers have done it.
+                </p>
+                
+                <div class="video-container">
+                    <video controls poster="../img/nonlinear.jpg" width="100%">
+                        <source src="../video/nonlinear_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                
+                <h2>Technical Details</h2>
+                <p>
+                    The system uses computer vision techniques to detect and track human keypoints in climbing videos. By indexing these keypoints and their temporal relationships, the application allows users to search for specific movements or positions without having to watch entire videos.
+                </p>
+                <p>
+                    The main components of the system include:
+                </p>
+                <ul>
+                    <li>A pose detection model based on OpenPose architecture</li>
+                    <li>A custom indexing algorithm for efficient retrieval</li>
+                    <li>A web-based user interface for visual queries</li>
+                    <li>A video playback system with nonlinear navigation</li>
+                </ul>
+                
+                <h2>Results</h2>
+                <p>
+                    The application successfully demonstrates the concept of nonlinear video querying for climbing videos. Users can find specific movements across a database of climbing videos by sketching or selecting poses, without having to scrub through entire videos manually.
+                </p>
+                
+                <p>
+                    <a href="https://docs.google.com/presentation/d/1UMt51EBX_Ovc9OgfL3ah4fRgmr5b9ON-AFRy6UkOCPI/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <u>View the slides from the final defense</u>
+                    </a>
+                </p>
+                
+                <h2>GitHub Repository</h2>
+                <p>
+                    <a href="https://github.com/danielekp/nonlinear-climbing-video-indexing" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View the code on GitHub
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <span>© 2025 Daniele Pace | All rights reserved</span>
+        </div>
+    </footer>
+
+    <!-- Social fixed sidebar -->
+    <div class="social-sidebar">
+        <ul>
+            <li class="item">
+                <a href="https://open.spotify.com/playlist/4jOpQ4t8Ii93fKvBJb6jUr?si=559ad34109ac4b93" target="_blank" rel="noopener noreferrer">
+                    <img src="../img/logo.png" alt="Spotify">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/project.js"></script>
+</body>
+</html>

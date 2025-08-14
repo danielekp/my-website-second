@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="qweDante" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    
+    <title>qweDante</title>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+                    <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+                </ul>
+                <div class="menu-bars" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="close-icon" id="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-menu">
+            <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+            <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+        </ul>
+    </div>
+
+    <!-- Project Content -->
+    <section class="project-details">
+        <div class="container">
+            <div class="back-link">
+                <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            </div>
+            
+            <div class="project-header">
+                <h1>qweDante</h1>
+                <div class="project-meta">
+                    <span class="project-type">Transformers fine-tuning</span>
+                </div>
+            </div>
+            
+            <div class="project-content">
+                <img src="../img/dantebert.jpg" alt="Few Shot Learning">
+                
+                <h2>Overview</h2>
+                <p>
+                    Objective of this project is to produce a generative model able to reply to any questions in the style of Dante (sommo poeta).
+                    The chosen model is qwen3. The fine-tuning is done using Unsloth framework, to reduce the computation and memory footprint
+                    and running the fine-tuning on a free instance on Google Colab. 
+                </p>
+                <h2>Data</h2>
+                <p>
+                    The dataset has been created manually (gathering all the material by Dante Alighieri available online) and using Google Gemini 2.5 pro.
+                    Each line follows this pattern:
+                    <div class="code-example">
+                        <pre><code>{"instruction": <question>, "response": <response in the style of Dante></code></pre>
+                                            </div>
+                    In total I gathered 654 lines, split in 8 jsonl files.
+                </p>
+                <h2>Training</h2>
+                <p>
+                    The training is documented on the notebook present in the <a href="https://github.com/danielekp/dantebert/blob/main/notebooks/finetuning_unsloth_qwen.ipynb" target="_blank" rel="noopener noreferrer">GitHub repo</a>. 
+                    I used a LoRA adapter to fine-tune model, loading the model in 4bit. Warmup steps are set to 5, and the batch size to 4. The total number of epoch was set to 1.
+                </p>
+                <p>
+                    <a href="https://colab.research.google.com/drive/1JrlDIwIoBwJzbpb-mBnd41byhC4Dhjnp?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        I built a small app on Google Colab. <u>Try it</u>.
+                    </a>
+                </p>
+                
+                <h2>GitHub Repository</h2>
+                <p>
+                    <a href="https://github.com/danielekp/dantebert/blob/main/dantebert.ipynb" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View the code on GitHub
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <span>© 2025 Daniele Pace | All rights reserved</span>
+        </div>
+    </footer>
+
+    <!-- Social fixed sidebar -->
+    <div class="social-sidebar">
+        <ul>
+            <li class="item">
+                <a href="https://open.spotify.com/playlist/4jOpQ4t8Ii93fKvBJb6jUr?si=559ad34109ac4b93" target="_blank" rel="noopener noreferrer">
+                    <img src="../img/logo.png" alt="Spotify">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/project.js"></script>
+</body>
+</html>

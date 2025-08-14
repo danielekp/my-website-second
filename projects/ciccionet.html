@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="CiccioNet - Gesture Recognition for Web Navigation" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    
+    <title>CiccioNet</title>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+                    <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+                </ul>
+                <div class="menu-bars" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="close-icon" id="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-menu">
+            <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+            <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+        </ul>
+    </div>
+
+    <!-- Project Content -->
+    <section class="project-details">
+        <div class="container">
+            <div class="back-link">
+                <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            </div>
+            
+            <div class="project-header">
+                <h1>CiccioNet</h1>
+                <div class="project-meta">
+                    <span class="project-date">Politecnico di Torino</span>
+                    <span class="project-type">Gesture Recognition System</span>
+                </div>
+            </div>
+            
+            <div class="project-content">
+                <img src="../img/gestures_recognition_article.jpg" alt="Few Shot Learning">
+                
+                <h2>Overview</h2>
+                <p>
+                    CiccioNet is a real-time gesture recognition system that enables users to navigate web pages (specifically Wikipedia) 
+                    using hand gestures captured through a webcam, eliminating the need for traditional input devices like a mouse or keyboard.
+                </p>
+                
+                <h2>Technical Details</h2>
+                <p>
+                    The system uses <span class="keywords">object detection</span> to recognize hand gestures in real-time. After exploring 
+                    different architectures, we selected a <span class="keywords">Single Shot MultiBox Detector (SSD) MobileNet FPNLite 320x320</span> 
+                    model, achieving an optimal balance between prediction speed and accuracy for real-time applications.
+                </p>
+                
+                <h2>Dataset Creation</h2>
+                <p>
+                    We created a custom dataset of approximately 5,000 images for training the model. The dataset contains two types of images:
+                </p>
+                
+                <ul>
+                    <li>
+                        <span class="keywords">Webcam captures</span>: About half of the images were captured using webcams in different 
+                        lighting conditions, scales, and environments to simulate real-world usage.
+                    </li>
+                    <li>
+                        <span class="keywords">Synthetic renders</span>: The other half were generated using Blender for 
+                        photorealistic 3D renders of hands with various rotations, scales, lighting conditions, and backgrounds.
+                    </li>
+                </ul>
+                
+                <div class="performance-chart">
+                    <img src="../img/synteticimages.png" alt="CiccioNet Gesture Examples">
+                    <p class="chart-caption">Examples of synthetic hand gesture renders</p>
+                </div>
+                
+                <h2>Recognized Gestures</h2>
+                <p>
+                    The system recognizes ten different hand gestures divided into two categories:
+                </p>
+                
+                <h3>Primary Gestures (Used for Navigation)</h3>
+                <ul>
+                    <li><span class="keywords">Fist</span>: Hide or show the Wikipedia index</li>
+                    <li><span class="keywords">Thumbs up</span>: Scroll up through the index</li>
+                    <li><span class="keywords">Thumbs down</span>: Scroll down through the index</li>
+                    <li><span class="keywords">Two fingers</span>: Select an item from the index</li>
+                    <li><span class="keywords">Open hand</span>: Reset/return to initial state</li>
+                </ul>
+                
+                <h3>Secondary Gestures (For Model Discrimination)</h3>
+                <p>
+                    To improve classification accuracy, we included additional gestures that could be easily confused with primary ones:
+                </p>
+                
+                <ul>
+                    <li>Three fingers</li>
+                    <li>Four fingers</li>
+                    <li>One finger</li>
+                    <li>"L" shape</li>
+                    <li>Horns gesture</li>
+                </ul>
+                
+                <h2>Training Process</h2>
+                <p>
+                    The model was trained using TensorFlow's object detection API with the following key components:
+                </p>
+                
+                <ul>
+                    <li><span class="keywords">Data augmentation</span>: We applied brightness and contrast adjustments to make the model robust to different lighting conditions</li>
+                    <li><span class="keywords">Loss functions</span>: Weighted smooth L1 for localization and weighted sigmoid focal for classification</li>
+                    <li><span class="keywords">Learning rate</span>: 0.005 with warm-up phase of 0.0022 for the first 1000 steps</li>
+                    <li><span class="keywords">Batch size</span>: 16 images per batch</li>
+                    <li><span class="keywords">Training steps</span>: 40,000</li>
+                </ul>
+                
+                <h2>Performance</h2>
+                <p>
+                    Our final model achieved the following metrics on the test set:
+                </p>
+                
+                <ul>
+                    <li>Mean Average Precision (mAP): 0.55</li>
+                    <li>Average Recall (AR): 0.63</li>
+                    <li>Classification Loss: 0.51</li>
+                    <li>Localization Loss: 0.15</li>
+                </ul>
+                
+                <p>
+                    To improve robustness in real-world conditions, we implemented a confidence threshold of 0.8 and required 
+                    several consecutive identical detections before triggering an action, reducing the impact of occasional 
+                    misclassifications.
+                </p>
+                
+                <h2>Web Integration</h2>
+                <p>
+                    We used <span class="keywords">Selenium</span> to integrate our gesture recognition system with web browsers, enabling users to:
+                </p>
+                
+                <ul>
+                    <li>Keep the Wikipedia table of contents persistently visible on the page</li>
+                    <li>Navigate through the contents using hand gestures</li>
+                    <li>Select sections to jump to without needing to scroll back to the top of the page</li>
+                </ul>
+
+                <h2>Demo</h2>
+                <div class="video-container">
+                    <video controls poster="../img/sample.png" width="100%">
+                        <source src="../video/sample.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <h2><a href="Gesture_Recognition_For_Navigating_Web_Pages.pdf" download>Download the paper </a></h2>
+                
+                <h2>GitHub Repository</h2>
+                <p>
+                    <a href="https://github.com/cicciok19/ML_project/tree/main" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View the code on GitHub
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <span>© 2025 Daniele Pace | All rights reserved</span>
+        </div>
+    </footer>
+
+    <!-- Social fixed sidebar -->
+    <div class="social-sidebar">
+        <ul>
+            <li class="item">
+                <a href="https://open.spotify.com/playlist/4jOpQ4t8Ii93fKvBJb6jUr?si=559ad34109ac4b93" target="_blank" rel="noopener noreferrer">
+                    <img src="../img/logo.png" alt="Spotify">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/project.js"></script>
+</body>
+</html>

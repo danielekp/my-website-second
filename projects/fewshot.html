@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Few Shot Learning Project" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    
+    <title>Few Shot Learning</title>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+                    <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+                </ul>
+                <div class="menu-bars" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="close-icon" id="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-menu">
+            <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+            <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+        </ul>
+    </div>
+
+    <!-- Project Content -->
+    <section class="project-details">
+        <div class="container">
+            <div class="back-link">
+                <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            </div>
+            
+            <div class="project-header">
+                <h1>Few Shot Learning</h1>
+                <div class="project-meta">
+                    <span class="project-date">Aalto University</span>
+                    <span class="project-type">Deep Learning Course Project</span>
+                </div>
+            </div>
+            
+            <div class="project-content">
+                <img src="../img/few.jpg" alt="Few Shot Learning">
+                
+                <h2>Overview</h2>
+                <p>
+                    Few-shot learning allows AI models to learn from a very small number of examples, mimicking the human ability to recognize patterns with minimal exposure. This project explores few-shot character recognition using a neural network approach.
+                </p>
+                
+                <h2>Technical Details</h2>
+                <p>
+                    The <span class="keywords">Omniglot dataset</span> is used for training (a collection of 19280 images of 964 characters from 30 alphabets. There are 20 images for each of the 964 characters in the dataset).
+                </p>
+                <p>
+                    We follow the <span class="keywords">meta-learning</span> approach, i.e., the network learns how to learn new tasks using multiple training examples of tasks.
+                    The meta-learning is performed using episodic training; in each episode, one training batch is processed.
+                </p>
+                <p>
+                    The <span class="keywords">embedding CNN</span> is a convolutional neural network whose aim is to embed images into a lower-dimensional space.
+                    The lower euclidean distance between the point to be labeled and the classes define the prediction.
+                </p>
+                
+                <h2>Live Demo</h2>
+                <p>
+                    The interactive demo below demonstrates how the few-shot learning model works. Draw characters in the top row to define your classes. Then draw characters to be classified in the bottom row and click "RUN THE MODEL" to see the predictions.
+                </p>
+                <p>
+                    Each character will be assigned to one of the classes based on the lowest Euclidean distance in the embedding space. The border color indicates the predicted class.
+                </p>
+                
+                <div id="few-shot-demo" class="giochino">
+                    <div class="canvas-row">
+                        <div class="canvas-column">
+                            <div class="canvas-wrapper">
+                                <canvas id="canvas1" class="demo-canvas" width="252" height="252"></canvas>
+                            </div>
+                            <div class="canvas-button" data-canvas="canvas1">Clear</div>
+                        </div>
+                        <div class="canvas-column">
+                            <div class="canvas-wrapper">
+                                <canvas id="canvas2" class="demo-canvas" width="252" height="252"></canvas>
+                            </div>
+                            <div class="canvas-button" data-canvas="canvas2">Clear</div>
+                        </div>
+                        <div class="canvas-column">
+                            <div class="canvas-wrapper">
+                                <canvas id="canvas3" class="demo-canvas" width="252" height="252"></canvas>
+                            </div>
+                            <div class="canvas-button" data-canvas="canvas3">Clear</div>
+                        </div>
+                    </div>
+                    
+                    <p class="canvas-instructions">Draw in the upper canvas the target characters (classes)</p>
+                    
+                    <div class="canvas-divider"></div>
+                    
+                    <p class="canvas-instructions">Draw in the canvas below the characters to be labeled</p>
+                    
+                    <div class="canvas-row">
+                        <div class="canvas-column">
+                            <div class="canvas-wrapper">
+                                <canvas id="canvas4" class="demo-canvas" width="252" height="252"></canvas>
+                            </div>
+                            <div class="canvas-button" data-canvas="canvas4">Clear</div>
+                        </div>
+                        <div class="canvas-column">
+                            <div class="canvas-wrapper">
+                                <canvas id="canvas5" class="demo-canvas" width="252" height="252"></canvas>
+                            </div>
+                            <div class="canvas-button" data-canvas="canvas5">Clear</div>
+                        </div>
+                        <div class="canvas-column">
+                            <div class="canvas-wrapper">
+                                <canvas id="canvas6" class="demo-canvas" width="252" height="252"></canvas>
+                            </div>
+                            <div class="canvas-button" data-canvas="canvas6">Clear</div>
+                        </div>
+                    </div>
+                    
+                    <div id="run-model" class="run-button">RUN THE MODEL</div>
+                    <div id="loader" class="loader" style="display: none;"></div>
+                </div>
+                
+                <h2>Implementation Notes</h2>
+                <p>
+                    The game above was implemented by exporting the PyTorch model as an ONNX model (runnable on JavaScript with
+                    the ONNX.js package). The first line of canvases defines the classes, while the second line is for the characters to be labeled.
+                    The prediction is done by finding the lowest Euclidean distance between the 64-dimensional array of the character and the 64-dimensional
+                    arrays of the classes.
+                </p>
+                
+                <h2>GitHub Repository</h2>
+                <p>
+                    <a href="https://github.com/danielekp/few-shot-learning" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View the code on GitHub
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <span>© 2025 Daniele Pace | All rights reserved</span>
+        </div>
+    </footer>
+
+    <!-- Social fixed sidebar -->
+    <div class="social-sidebar">
+        <ul>
+            <li class="item">
+                <a href="https://open.spotify.com/playlist/4jOpQ4t8Ii93fKvBJb6jUr?si=559ad34109ac4b93" target="_blank" rel="noopener noreferrer">
+                    <img src="../img/logo.png" alt="Spotify">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/onnxruntime-web/1.14.0/ort.min.js"></script>
+    <script src="../js/project.js"></script>
+</body>
+</html>

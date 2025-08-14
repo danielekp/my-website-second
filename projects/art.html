@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="AI-driven Art Project" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    
+    <title>AI-driven Art</title>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+                    <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+                </ul>
+                <div class="menu-bars" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="close-icon" id="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-menu">
+            <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+            <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+        </ul>
+    </div>
+
+    <!-- Project Content -->
+    <section class="project-details">
+        <div class="container">
+            <div class="back-link">
+                <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            </div>
+            
+            <div class="project-header">
+                <h1>AI-driven Art</h1>
+                <div class="project-meta">
+                    <span class="project-type">Creative AI Research</span>
+                </div>
+            </div>
+            
+            <div class="project-content">
+                <img src="../img/generative.jpg" alt="Few Shot Learning">
+                
+                <h2>Overview</h2>
+                <p>
+                    All images in this project are generated using deep neural networks, starting from a textual description. The pipeline used is a combination of VQGAN and OpenAI's CLIP, which together can transform text prompts into visually striking images.
+                </p>
+                
+                <h2>The Process</h2>
+                <p>
+                    The generation process involves:
+                </p>
+                <ol>
+                    <li>Creating a text prompt that describes the desired image</li>
+                    <li>Using CLIP to evaluate how well generated images match the text</li>
+                    <li>Using VQGAN to generate and iteratively refine the images</li>
+                    <li>Fine-tuning the process through multiple iterations</li>
+                </ol>
+                
+                <p>
+                    This approach allows for artistic exploration at the intersection of human creativity and machine learning. By carefully crafting prompts and guiding the generation process, we can achieve images with unique aesthetics that wouldn't be possible with traditional artistic methods.
+                </p>
+                
+                <h2>Gallery</h2>
+                <div class="image-gallery">
+                    <div>
+                        <img src="../img/fabric_of_art.png" alt="AI Art 1">
+                        <p>The Fabric of Art</p>
+                    </div>
+                    <div>
+                        <img src="../img/fabric_of_art2.png" alt="AI Art 2">
+                        <p>Fabric of Art II</p>
+                    </div>
+                    <div>
+                        <img src="../img/factory_of_art.png" alt="AI Art 3">
+                        <p>Factory of Art</p>
+                    </div>
+                    <div>
+                        <img src="../img/hate.png" alt="AI Art 4">
+                        <p>Emotion</p>
+                    </div>
+                    <div>
+                        <img src="../img/hate2.png" alt="AI Art 5">
+                        <p>Emotion II</p>
+                    </div>
+                    <div>
+                        <img src="../img/hatedeepblueeyes.png" alt="AI Art 6">
+                        <p>Deep Blue Eyes</p>
+                    </div>
+                    <div>
+                        <img src="../img/elephant.png" alt="AI Art 7">
+                        <p>Elephant Dreams</p>
+                    </div>
+                    <div>
+                        <img src="../img/imnothere2.png" alt="AI Art 8">
+                        <p>I'm Not Here</p>
+                    </div>
+                    <div>
+                        <img src="../img/blueeyedfrancaisette.png" alt="AI Art 9">
+                        <p>Blue Eyed Francaisette</p>
+                    </div>
+                    <div>
+                        <img src="../img/londonpunk23.png" alt="AI Art 10">
+                        <p>London Punk</p>
+                    </div>
+                    <div>
+                        <img src="../img/londonpunk3.png" alt="AI Art 11">
+                        <p>London Punk II</p>
+                    </div>
+                    <div>
+                        <img src="../img/milanpunk3.png" alt="AI Art 12">
+                        <p>Milan Punk</p>
+                    </div>
+                </div>
+                
+                <h2>Technical Details</h2>
+                <p>
+                    <strong>VQGAN (Vector Quantized Generative Adversarial Network):</strong> A type of GAN that learns to compress and reconstruct images through a discrete codebook of visual components.
+                </p>
+                <p>
+                    <strong>CLIP (Contrastive Language-Image Pre-Training):</strong> A neural network trained on a variety of image-text pairs, which can understand both images and natural language descriptions.
+                </p>
+                <p>
+                    The combination of these two models allows us to generate images that are guided by text prompts, creating a new form of human-AI collaborative art creation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <span>© 2025 Daniele Pace | All rights reserved</span>
+        </div>
+    </footer>
+
+    <!-- Social fixed sidebar -->
+    <div class="social-sidebar">
+        <ul>
+            <li class="item">
+                <a href="https://open.spotify.com/playlist/4jOpQ4t8Ii93fKvBJb6jUr?si=559ad34109ac4b93" target="_blank" rel="noopener noreferrer">
+                    <img src="../img/logo.png" alt="Spotify">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/project.js"></script>
+</body>
+</html>

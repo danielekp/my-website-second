@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Personal Portfolio Website" />
+    <meta name="author" content="Daniele Pace" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta name="title" property="og:title" content="Daniele" />
+    <meta name="description" property="og:description" content="Daniele pace stuff" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="img/logo.png" type="image/png">
+    
+    <title>Daniele</title>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="menu-item"><a href="#projects">projects</a></li>
+                    <li class="menu-item"><a href="#contact">contacts</a></li>
+                </ul>
+                <div class="menu-bars" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="close-icon" id="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-menu">
+            <li class="menu-item"><a href="#projects">projects</a></li>
+            <li class="menu-item"><a href="#contact">contacts</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-bottom">
+                    <img src="img/nepas.png" alt="AI image" class="hero-image">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="project-wrapper">
+            <div class="container">
+                <div class="section-title">Projects</div>
+                
+                <!-- Project Cards -->
+                <div class="project-cards">
+
+                    <!-- DanteBert -->
+                    <div class="card">
+                        <div class="card-left">
+                            <img src="img/dantebert.jpg" alt="DanteBert">
+                        </div>
+                        <div class="card-right">
+                            <h4>qweDante</h4>
+                            <a style="opacity: 0.5;">2025</a>
+                            <p>Personal project to mimic Dante's writing styles using Transformers.</p>
+                            <div class="btn-group">    
+                                <a href="projects/dantebert.html" class="btn primary-btn">More details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SAE -->
+                    <div class="card">
+                        <div class="card-left">
+                            <img src="img/mondrian-mechinter.png" alt="sae">
+                        </div>
+                        <div class="card-right">
+                            <h4>Mechanistic Interpretability using SAE</h4>
+                            <a style="opacity: 0.5;">2025</a>
+                            <p>Interpret the internal activations of Gemma model using the sparse autoencoders.</p>
+                            <div class="btn-group">    
+                                <a href="projects/sae.html" class="btn primary-btn">More details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Yla -->
+                    <div class="card">
+                        <div class="card-left">
+                            <img src="img/yla.png" alt="Yla">
+                        </div>
+                        <div class="card-right">
+                            <h4>Yla</h4>
+                            <a style="opacity: 0.5;">2025</a>
+                            <p>Your local AI assistant.</p>
+                            <div class="btn-group">    
+                                <a href="projects/yla.html" class="btn primary-btn">More details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- SolrQueries -->
+                    <div class="card">
+                        <div class="card-left">
+                            <img src="img/semanticsearch.png" alt="SemanticSearch">
+                        </div>
+                        <div class="card-right">
+                            <h4>Computer-Assisted Solr Query Generation</h4>
+                            <a style="opacity: 0.5;">2022</a>
+                            <p>Project done for the fellowhip at PiSchool.</p>
+                            <div class="btn-group">    
+                                <a href="projects/solrquery.html" class="btn primary-btn">More details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nonlinear Climbing Video Indexing -->
+                    <div class="card">
+                        <div class="card-left">
+                            <img src="img/nonlinear.jpg" alt="Nonlinear Climbing Video Indexing">
+                        </div>
+                        <div class="card-right">
+                            <h4>Nonlinear Climbing Video Indexing</h4>
+                            <a style="opacity: 0.5;">2021</a>
+                            <p>Master thesis made in collaboration with Aalto University. Web-based application to retrieve parts of videos with nonlinear queries based on spatial area and body key points.</p>
+                            <div class="btn-group">    
+                                <a href="projects/nonlinearclimbing.html" class="btn primary-btn">More details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CiccioNet -->
+                    <div class="card">
+                        <div class="card-left">
+                            <img src="img/gestures_recognition_article.jpg" alt="CiccioNet">
+                        </div>
+                        <div class="card-right">
+                            <h4>CiccioNet</h4>
+                            <a style="opacity: 0.5;">2021</a>
+                            <p>Application to control web page (Wikipedia) using hand gestures.</p>
+                            <div class="btn-group">    
+                                <a href="projects/ciccionet.html" class="btn primary-btn">More details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Few Show Learning -->
+                    <div class="card">
+                        <div class="card-left">
+                            <img src="img/few.jpg" alt="Few Show Learning">
+                        </div>
+                        <div class="card-right">
+                            <h4>Few Shot Neural Network</h4>
+                            <a style="opacity: 0.5;">2021</a>
+                            <p>Few shot neural network with live demo for character recognition.</p>
+                            <div class="btn-group">
+                                <a href="projects/fewshot.html" class="btn primary-btn">More details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Art -->
+                    <div class="card">
+                        <div class="card-left">
+                            <img src="img/generative.jpg" alt="AI-driven art">
+                        </div>
+                        <div class="card-right">
+                            <h4>AI-driven Art</h4>
+                            <a style="opacity: 0.5;">2021</a>
+                            <p>Images generated exploring the latest (at the time, before Dalle) advancements in artificial neural networks.</p>
+                            <div class="btn-group">
+                                <a href="projects/art.html" class="btn primary-btn">More details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">Contacts</div>
+            <div class="big-card">
+                <div class="email">
+                    <a>danielekpace@gmail.com</a>
+                    <img src="img/gmail.png" alt="Email">
+                </div>
+                <div class="email">
+                    <a href="https://github.com/danielekp" target="_blank" rel="noopener noreferrer">danielekp</a>
+                    <img src="img/github.png" alt="GitHub">
+                </div>
+                <div class="email">
+                    <a href="https://huggingface.co/Daniele" target="_blank" rel="noopener noreferrer">Daniele</a>
+                    <img src="img/hf.png" alt="Hugging Face">
+                </div>
+                <div class="email">
+                    <a href="https://www.linkedin.com/in/daniele-k-pace/" target="_blank" rel="noopener noreferrer">Daniele Pace</a>
+                    <img src="img/linkedin.png" alt="LinkedIn">
+                </div>
+                <div class="email">
+                    <a href="cv.pdf" rel="noopener noreferrer">CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <span>© 2025 Daniele Pace | All rights reserved</span>
+        </div>
+    </footer>
+
+    <!-- Social fixed sidebar -->
+    <div class="social-sidebar">
+        <ul>
+            <li class="item">
+                <a href="https://open.spotify.com/playlist/4jOpQ4t8Ii93fKvBJb6jUr?si=559ad34109ac4b93" target="_blank" rel="noopener noreferrer">
+                    <img src="img/logo.png" alt="Spotify">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

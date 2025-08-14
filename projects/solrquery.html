@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Computer-Assisted Query Construction" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    
+    <title>Computer-Assisted Solr Query Generation</title>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+                    <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+                </ul>
+                <div class="menu-bars" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="close-icon" id="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-menu">
+            <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+            <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+        </ul>
+    </div>
+
+    <!-- Project Content -->
+    <section class="project-details">
+        <div class="container">
+            <div class="back-link">
+                <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            </div>
+            
+            <div class="project-header">
+                <h1>Computer-Assisted Solr Query Generation</h1>
+                <div class="project-meta">
+                    <span class="project-date">PiSchool</span>
+                </div>
+            </div>
+            
+            <div class="project-content">
+                <img src="../img/semanticsearch.png" alt="Few Shot Learning">
+
+                <h2>Overview</h2>
+                <p>
+                    This project focused on improving Wheesbee, an advanced retrieval engine that helps extract
+                    relevant information and insights for decision-making processes in R&D. We developed a
+                    proof-of-concept solution that transforms natural language queries into powerful Solr queries,
+                    making advanced search capabilities accessible to novice users.
+                </p>
+                
+                <h2>Technical Approach</h2>
+                <p>
+                    The system uses <span class="keywords">semantic search</span> and <span class="keywords">natural language processing</span> to:
+                </p>
+                <ul>
+                    <li>Generate keywords from individual concepts in the user query</li>
+                    <li>Provide contextual suggestions based on the search corpus</li>
+                    <li>Help users construct complex Solr queries without needing to learn Solr syntax</li>
+                </ul>
+                
+                <h2>System Architecture</h2>
+                <p>
+                    We built two primary APIs using <span class="keywords">Python Flask</span> to power the query construction process:
+                </p>
+                
+                <h3>Concept-Based Synonyms API</h3>
+                <p>
+                    This API analyzes the natural language query, breaks it down into core concepts, and generates relevant 
+                    synonym suggestions for each concept:
+                </p>
+                <ul>
+                    <li>Endpoint: <code>/api/synonyms</code></li>
+                    <li>Processes natural language input using <span class="keywords">Word2Vec</span> and <span class="keywords">Gensim Phraser</span></li>
+                    <li>Returns concept-specific suggestions with relevance scores</li>
+                </ul>
+                
+                <div class="architecture-diagram">
+                    <img src="../img/synonymsapi.png" alt="Synonyms API Architecture">
+                    <p class="chart-caption">Architecture of the Synonyms API workflow</p>
+                </div>
+                
+                <h3>Contextual Suggestions API</h3>
+                <p>
+                    This API provides broader contextual suggestions based on the entire search corpus:
+                </p>
+                <ul>
+                    <li>Endpoint: <code>/api/contextual</code></li>
+                    <li>Uses <span class="keywords">SciBert-NLI</span> and <span class="keywords">KeyBert</span> for semantic search</li>
+                    <li>Employs <span class="keywords">TextRank</span> algorithm for keyword extraction</li>
+                    <li>Ranks keywords based on semantic relevance using cosine distance</li>
+                </ul>
+                
+                <div class="architecture-diagram">
+                    <img src="../img/contextualapi.png" alt="Contextual API Architecture">
+                    <p class="chart-caption">Architecture of the Contextual Suggestions API workflow</p>
+                </div>
+                
+                <h2>User Interface</h2>
+                <p>
+                    The front-end application provides an intuitive interface for query construction:
+                </p>
+                <ul>
+                    <li>Input field for natural language queries</li>
+                    <li>Concept-based suggestion lists that users can select from</li>
+                    <li>Contextual suggestions displayed as a word cloud with heat-map coloring</li>
+                    <li>Real-time generation of the equivalent Solr query</li>
+                    <li>Support for manual modification of the generated query</li>
+                </ul>
+                
+                <div class="ui-screenshot">
+                    <img src="../img/query-ui.png" alt="Query Construction Interface">
+                    <p class="chart-caption">User interface for query construction showing concept-based and contextual suggestions</p>
+                </div>
+                
+                <h2>Training Process</h2>
+                <p>
+                    The system's semantic capabilities were built on custom-trained models:
+                </p>
+                <ul>
+                    <li><span class="keywords">Word2Vec model</span>: Trained on 400,000 papers from the corpus</li>
+                    <li><span class="keywords">Embeddings</span>: Generated for all documents in the corpus to enable semantic search</li>
+                    <li><span class="keywords">Phrase detection</span>: Used to identify multi-word concepts and technical terminology</li>
+                </ul>
+                
+                <h2>Key Deliverables</h2>
+                <p>
+                    The project produced the following deliverables:
+                </p>
+                <ul>
+                    <li>Deployed APIs for contextual suggestions and concept-based synonyms</li>
+                    <li>React-based front-end application deployed as Docker containers</li>
+                    <li>Pre-trained model weights and embeddings for 400,000 papers</li>
+                    <li>Comprehensive documentation and code repository</li>
+                    <li>Framework for expanding the training data to include more of the Solr corpus</li>
+                </ul>
+                
+                <h2>Impact</h2>
+                <p>
+                    This project significantly improved the accessibility of Wheesbee's powerful search capabilities:
+                </p>
+                <ul>
+                    <li>Reduced the learning curve for new users by eliminating the need to learn Solr syntax</li>
+                    <li>Improved search relevance through semantic understanding of user queries</li>
+                    <li>Enhanced R&D decision-making processes by making information more discoverable</li>
+                    <li>Provided a foundation for future AI-assisted search capabilities</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <span>© 2025 Daniele Pace | All rights reserved</span>
+        </div>
+    </footer>
+
+    <!-- Social fixed sidebar -->
+    <div class="social-sidebar">
+        <ul>
+            <li class="item">
+                <a href="https://open.spotify.com/playlist/4jOpQ4t8Ii93fKvBJb6jUr?si=559ad34109ac4b93" target="_blank" rel="noopener noreferrer">
+                    <img src="../img/logo.png" alt="Spotify">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/project.js"></script>
+</body>
+</html>

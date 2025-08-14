@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Yla - Your Local AI Assistant" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    
+    <title>Yla</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVFX5E2ERE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BVFX5E2ERE', { send_page_view: true });
+    </script>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+                    <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+                </ul>
+                <div class="menu-bars" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="close-icon" id="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-menu">
+            <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+            <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+        </ul>
+    </div>
+
+    <!-- Project Content -->
+    <section class="project-details">
+        <div class="container">
+            <div class="back-link">
+                <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            </div>
+            
+            <div class="project-header">
+                <h1>Yla - Your Local AI Assistant</h1>
+                <div class="project-meta">
+                    <span class="project-date">AI democratization</span>
+                    <span class="project-type">Ollama</span>
+                </div>
+            </div>
+            
+            <div class="project-content">
+                <img src="../img/yla.png" alt="Few Shot Learning">
+ 
+                <h2>Overview</h2>
+                <p>
+                    Yla is a lightweight, privacy-focused AI chatbot application that runs completely locally using Ollama. 
+                    It enables users to interact with powerful open-source large language models without sending data to external servers, 
+                    ensuring complete data privacy and avoiding cloud breaches.
+                </p>
+                
+                <h2>Key Features</h2>
+                <p>
+                    Yla offers a compelling set of features focused on privacy, flexibility, and control:
+                </p>
+                
+                <ul>
+                    <li><span class="keywords">Local AI Control</span>: Select from multiple configured models</li>
+                    <li><span class="keywords">Privacy First</span>: All processing happens on your machine</li>
+                    <li><span class="keywords">No Internet Dependencies</span>: Works completely offline</li>
+                    <li><span class="keywords">Custom Personalities</span>: Create specialized assistants with Modelfiles</li>
+                    <li><span class="keywords">Parameter Experimentation</span>: Resend messages with different temperature, top_p, and top_k settings</li>
+                    <li><span class="keywords">Model Extensibility</span>: Easily add new models as they become available on Ollama</li>
+                    <li><span class="keywords">Reasoning Visualization</span>: View model reasoning process when wrapped in the <code>&lt;think&gt;</code> tag</li>
+                </ul>
+                
+                <h2>Technical Implementation</h2>
+                <p>
+                    Yla is built with simplicity and efficiency in mind:
+                </p>
+                
+                <ul>
+                    <li>Lightweight architecture using just HTML, CSS, and JavaScript</li>
+                    <li>No frameworks like React required - just Ollama, a simple HTTP server, and a browser</li>
+                    <li>Communicates with the local Ollama server via REST API</li>
+                    <li>Configurable through a straightforward JSON configuration file</li>
+                    <li>Supports model validation and dynamic downloading</li>
+                </ul>
+                
+                <h2>Model Management</h2>
+                <p>
+                    Yla provides comprehensive model management capabilities:
+                </p>
+                
+                <ul>
+                    <li><span class="keywords">Automatic Validation</span>: Checks installed models on application launch</li>
+                    <li><span class="keywords">Visual Selection</span>: Choose models from an intuitive carousel interface</li>
+                    <li><span class="keywords">Download Integration</span>: Pull missing models directly from the UI</li>
+                    <li><span class="keywords">State Persistence</span>: Selected model remembered until page refresh</li>
+                    <li><span class="keywords">Status Indicators</span>: 
+                        <ul>
+                            <li>Available models - full color, clickable</li>
+                            <li>Missing models - grayed out with warning and download option</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h2>Custom Model Configuration</h2>
+                <p>
+                    One of Yla's powerful features is the ability to create and use specialized AI assistants:
+                </p>
+                
+                <h3>Creating Custom Models</h3>
+                <p>
+                    Users can create personalized AI assistants by defining Modelfiles with specific instructions and parameters:
+                </p>
+                
+                <div class="code-example">
+                    <pre><code># Example: technical-assistant.txt
+FROM deepseek-r1:7b
+SYSTEM """
+You are an expert technical assistant. 
+Respond in markdown format with detailed explanations.
+"""
+PARAMETER num_ctx 32768</code></pre>
+                </div>
+                
+                <h3>Configuration System</h3>
+                <p>
+                    Yla uses a flexible configuration system to manage models and their parameters:
+                </p>
+                
+                <div class="code-example">
+                    <pre><code>// config.js
+const config = {
+    models: [
+        {
+            name: "Yla:latest",        // Must match Ollama model name
+            num_ctx: 65536,            // Context window size
+            temperature: 0.7,          // 0-2 (0=precise, 2=creative)
+            top_k: 40,                 // 1-100
+            top_p: 0.9,                // 0-1
+            systemMessage: "Friendly general assistant",
+            size: "4.1GB"
+        }
+    ],
+    
+    api: {
+        endpoint: "http://localhost:11434/v1/chat/completions",
+        available_models: "http://localhost:11434/v1/models",
+    }
+};</code></pre>
+                </div>
+                
+                <h3>Configuration Reference</h3>
+                <table class="config-table">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>Ollama model name (exact match required)</td>
+                            <td>"my-expert:latest"</td>
+                        </tr>
+                        <tr>
+                            <td><code>description</code></td>
+                            <td>Brief description (optional)</td>
+                            <td>"smart coding assistant"</td>
+                        </tr>
+                        <tr>
+                            <td><code>size</code></td>
+                            <td>Size of the model (informational only)</td>
+                            <td>"4.1GB"</td>
+                        </tr>
+                        <tr>
+                            <td><code>num_ctx</code></td>
+                            <td>Context window size (tokens)</td>
+                            <td>32768</td>
+                        </tr>
+                        <tr>
+                            <td><code>systemMessage</code></td>
+                            <td>Hidden behavior instructions</td>
+                            <td>"You are an expert..."</td>
+                        </tr>
+                        <tr>
+                            <td><code>temperature</code></td>
+                            <td>Response creativity (0.3-1.8)</td>
+                            <td>0.7</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2>Technical Architecture</h2>
+                <p>
+                    Yla's architecture is elegantly simple:
+                </p>
+                
+                <ul>
+                    <li><span class="keywords">Frontend</span>: HTML/CSS/JavaScript user interface</li>
+                    <li><span class="keywords">Backend</span>: Ollama server running locally on port 11434</li>
+                    <li><span class="keywords">Communication</span>: REST API calls to Ollama's endpoints</li>
+                    <li><span class="keywords">Storage</span>: Local file system for models and configurations</li>
+                    <li><span class="keywords">Deployment</span>: Simple HTTP server (Python's http.server or similar)</li>
+                </ul>
+                
+                <h2>Privacy & Security Benefits</h2>
+                <p>
+                    Yla offers significant advantages for privacy-conscious users:
+                </p>
+                
+                <ul>
+                    <li>Complete data sovereignty with all processing happening locally</li>
+                    <li>No data sent to external servers or cloud services</li>
+                    <li>Works offline, making it suitable for sensitive environments</li>
+                    <li>Open-source approach enables security auditing</li>
+                    <li>Avoids subscription costs and usage tracking</li>
+                </ul>
+                
+                <h2>Performance Considerations</h2>
+                <p>
+                    For optimal performance with Yla:
+                </p>
+                
+                <ul>
+                    <li>Choose model size based on available hardware resources</li>
+                    <li>Adjust context window size (<code>num_ctx</code>) for memory constraints</li>
+                    <li>Consider smaller model variants for lighter hardware (e.g., 7B vs 32B)</li>
+                    <li>Close memory-intensive applications when using larger models</li>
+                </ul>
+                
+                <h2>Demo</h2>
+                <div class="video-container">
+                    <video controls poster="../img/yla-demo-poster.png" width="100%">
+                        <source src="../video/yla-demo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                
+                <h2>GitHub Repository</h2>
+                <p>
+                    <a href="https://github.com/danielekp/yla" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View the code on GitHub
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <span>© 2025 Daniele Pace | All rights reserved</span>
+        </div>
+    </footer>
+
+    <!-- Social fixed sidebar -->
+    <div class="social-sidebar">
+        <ul>
+            <li class="item">
+                <a href="https://open.spotify.com/playlist/4jOpQ4t8Ii93fKvBJb6jUr?si=559ad34109ac4b93" target="_blank" rel="noopener noreferrer">
+                    <img src="../img/logo.png" alt="Spotify">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/project.js"></script>
+</body>
+</html>
