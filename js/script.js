@@ -39,7 +39,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Initialize the page
-document.addEventListener('DOMContentLoaded', () => {
-    populateTechStack();
-});

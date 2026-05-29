@@ -5,13 +5,25 @@
   .back-link {
     display: inline-block;
     margin-bottom: 2rem;
-    font-size: 1rem;
-    color: #777779;
-    transition: color 0.3s ease;
   }
-  
-  .back-link:hover {
-    color: #534848;
+
+  .back-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    color: #6a6a6a;
+    border-bottom: none;
+    transition: color 0.2s ease;
+  }
+
+  .back-link a:hover {
+    color: #1a1a1a;
+    border-bottom: none;
+  }
+
+  .back-link i {
+    font-size: 0.8rem;
   }
   
   .project-header {
