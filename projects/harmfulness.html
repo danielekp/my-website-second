@@ -3,11 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#fafaf7" />
     <meta name="description" content="Harmfulness directions across OLMo 3 training checkpoints" />
+    <link rel="canonical" href="https://danielepace.tech/projects/harmfulness.html" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Daniele Pace" />
+    <meta property="og:url" content="https://danielepace.tech/projects/harmfulness.html" />
+    <meta property="og:title" content="Harmfulness Directions in OLMo" />
+    <meta property="og:description" content="Harmfulness directions across OLMo 3 training checkpoints" />
+    <meta property="og:image" content="https://danielepace.tech/img/punkylirico.png" />
+    <meta property="og:image:width" content="480" />
+    <meta property="og:image:height" content="480" />
+    <meta property="og:image:alt" content="AI-generated artwork of a punk with a pink mohawk" />
+    <meta name="twitter:card" content="summary" />
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,9 +29,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/project.css">
-
-    <!-- Favicon -->
-    <link rel="icon" href="../img/logo.png" type="image/png">
 
     <title>Harmfulness Directions in OLMo</title>
 
@@ -72,7 +83,7 @@
             </div>
 
             <div class="project-content">
-                <img src="../img/olmo-harm-directions.jpg" alt="Checkpoint-by-checkpoint cosine similarity of the general harm direction across OLMo 3 training">
+                <img src="../img/hero/olmo-harm-directions.webp" alt="Hopper-style painting of a man at a desk by a window, facing a blackboard titled &quot;OLMo internals across training checkpoints&quot;">
 
                 <h2>Overview</h2>
                 <p>
@@ -109,7 +120,7 @@
                 <p>
                     In-distribution AUROC is high (~0.9) even at initialization, before any training. The signal cannot be semantic: it reflects superficial lexical and structural cues that already separate the datasets in the random model's activation space. On lexically rewritten prompts, early-checkpoint AUROC drops substantially for most subcategories, while post-training checkpoints recover near-ceiling performance, indicating genuinely learned generalization.
                 </p>
-                <img src="../img/olmo_auroc_modified.png" alt="Validation AUROC across training stages on lexically modified in-distribution data">
+                <img class="figure-wide" src="../img/olmo_auroc_modified.png" alt="Validation AUROC across training stages on lexically modified in-distribution data">
                 <p>
                     Out-of-distribution evaluations confirm that AUROC can be driven by several kinds of non-semantic signals: token-level cues, structural and formatting patterns, and dataset-level regularities. In-distribution separability alone says little about meaningful structure.
                 </p>
@@ -118,11 +129,12 @@
                 <p>
                     The general harm direction does not drift uniformly: it shifts in discrete phases aligned with training stages, with the largest single jump at the base-to-SFT transition. The pattern is nearly identical for every subcategory, suggesting global training dynamics rather than concept-specific learning.
                 </p>
+                <img class="figure-wide" src="../img/olmo_checkpoint_similarity.jpg" alt="Pairwise cosine similarity of the general harm direction across OLMo 3 training checkpoints at layer 15" loading="lazy">
                 <p>
                     The subcategories occupy a shared yet structured space and never collapse into a single harmfulness axis. Violence, non-violent crime, drug/weapons, and financial crime form a tight cluster close to the general harm direction; privacy is a persistent outlier; hate speech and discrimination sit in between. This structure is established within the first few thousand steps and is later refined, not reorganized.
                 </p>
-                <img src="../img/olmo_pairwise_similarity.png" alt="Pairwise cosine similarity between harmfulness subcategory directions at six representative checkpoints">
-                <img src="../img/olmo_subcat_general.png" alt="Cosine similarity of each subcategory direction to the general harm direction during early pretraining">
+                <img class="figure-wide" src="../img/olmo_pairwise_similarity.png" alt="Pairwise cosine similarity between harmfulness subcategory directions at six representative checkpoints">
+                <img class="figure-wide" src="../img/olmo_subcat_general.png" alt="Cosine similarity of each subcategory direction to the general harm direction during early pretraining">
                 <p>
                     Centroid drift, centroid geometry, and direction magnitudes all point the same way: the scale of the directions is set early in pretraining, after which changes are mostly rotational and synchronized across categories.
                 </p>
@@ -131,7 +143,7 @@
                 <p>
                     We steered the Instruct model with directions from each checkpoint (&lambda; from -2 to +2, 250 prompts, baseline refusal 31%). Early-checkpoint directions either do nothing or break the model into incoherence. From mid-pretraining (~step 100k) they become usable, and post-training directions are by far the most effective: positive steering with the Instruct direction drives refusal up to 98%, while negative steering yields more modest reductions.
                 </p>
-                <img src="../img/olmo_steering.png" alt="Refusal rate when steering OLMo 3 7B Instruct with directions from different checkpoints and scales">
+                <img class="figure-wide" src="../img/olmo_steering.png" alt="Refusal rate when steering OLMo 3 7B Instruct with directions from different checkpoints and scales">
                 <p>
                     Cross-checkpoint probing shows the same boundary: directions extracted from ~step 80k onward transfer well through post-training. The final harmfulness directions are not created from scratch during alignment; they become broadly recognizable in mid-pretraining.
                 </p>

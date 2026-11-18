@@ -3,11 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#fafaf7" />
     <meta name="description" content="qweDante" />
+    <link rel="canonical" href="https://danielepace.tech/projects/dantebert.html" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Daniele Pace" />
+    <meta property="og:url" content="https://danielepace.tech/projects/dantebert.html" />
+    <meta property="og:title" content="qweDante" />
+    <meta property="og:description" content="qweDante" />
+    <meta property="og:image" content="https://danielepace.tech/img/punkylirico.png" />
+    <meta property="og:image:width" content="480" />
+    <meta property="og:image:height" content="480" />
+    <meta property="og:image:alt" content="AI-generated artwork of a punk with a pink mohawk" />
+    <meta name="twitter:card" content="summary" />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,10 +30,15 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/project.css">
     
-    <!-- Favicon -->
-    <link rel="icon" href="../img/logo.png" type="image/png">
-    
     <title>qweDante</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVFX5E2ERE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BVFX5E2ERE', { send_page_view: true });
+    </script>
 </head>
 <body>
     <!-- Header/Navigation -->
@@ -63,27 +82,29 @@
             </div>
             
             <div class="project-content">
-                <img src="../img/dantebert.jpg" alt="Few Shot Learning">
+                <img src="../img/dantebert.jpg" alt="Profile portrait of Dante Alighieri in a red hood and laurel wreath">
                 
                 <h2>Overview</h2>
                 <p>
-                    Objective of this project is to produce a generative model able to reply to any questions in the style of Dante (sommo poeta).
-                    The chosen model is qwen3. The fine-tuning is done using Unsloth framework, to reduce the computation and memory footprint
+                    The objective of this project is to produce a generative model able to reply to any questions in the style of Dante (sommo poeta).
+                    The chosen model is Qwen3. The fine-tuning is done using Unsloth framework, to reduce the computation and memory footprint
                     and running the fine-tuning on a free instance on Google Colab. 
                 </p>
                 <h2>Data</h2>
                 <p>
                     The dataset has been created manually (gathering all the material by Dante Alighieri available online) and using Google Gemini 2.5 pro.
                     Each line follows this pattern:
-                    <div class="code-example">
-                        <pre><code>{"instruction": <question>, "response": <response in the style of Dante></code></pre>
-                                            </div>
+                </p>
+                <div class="code-example">
+                    <pre><code>{"instruction": &lt;question&gt;, "response": &lt;response in the style of Dante&gt;}</code></pre>
+                </div>
+                <p>
                     In total I gathered 654 lines, split in 8 jsonl files.
                 </p>
                 <h2>Training</h2>
                 <p>
                     The training is documented on the notebook present in the <a href="https://github.com/danielekp/dantebert/blob/main/notebooks/finetuning_unsloth_qwen.ipynb" target="_blank" rel="noopener noreferrer">GitHub repo</a>. 
-                    I used a LoRA adapter to fine-tune model, loading the model in 4bit. Warmup steps are set to 5, and the batch size to 4. The total number of epoch was set to 1.
+                    I used a LoRA adapter to fine-tune the model, loading the model in 4bit. Warmup steps are set to 5, and the batch size to 4. The total number of epochs was set to 1.
                 </p>
                 <p>
                     <a href="https://colab.research.google.com/drive/1JrlDIwIoBwJzbpb-mBnd41byhC4Dhjnp?usp=sharing" target="_blank" rel="noopener noreferrer">

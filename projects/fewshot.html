@@ -3,11 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#fafaf7" />
     <meta name="description" content="Few Shot Learning Project" />
+    <link rel="canonical" href="https://danielepace.tech/projects/fewshot.html" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Daniele Pace" />
+    <meta property="og:url" content="https://danielepace.tech/projects/fewshot.html" />
+    <meta property="og:title" content="Few Shot Learning" />
+    <meta property="og:description" content="Few Shot Learning Project" />
+    <meta property="og:image" content="https://danielepace.tech/img/punkylirico.png" />
+    <meta property="og:image:width" content="480" />
+    <meta property="og:image:height" content="480" />
+    <meta property="og:image:alt" content="AI-generated artwork of a punk with a pink mohawk" />
+    <meta name="twitter:card" content="summary" />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,10 +30,15 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/project.css">
     
-    <!-- Favicon -->
-    <link rel="icon" href="../img/logo.png" type="image/png">
-    
     <title>Few Shot Learning</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVFX5E2ERE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BVFX5E2ERE', { send_page_view: true });
+    </script>
 </head>
 <body>
     <!-- Header/Navigation -->
@@ -89,7 +108,7 @@
                     The interactive demo below demonstrates how the few-shot learning model works. Draw characters in the top row to define your classes. Then draw characters to be classified in the bottom row and click "RUN THE MODEL" to see the predictions.
                 </p>
                 <p>
-                    Each character will be assigned to one of the classes based on the lowest Euclidean distance in the embedding space. The border color indicates the predicted class.
+                    Each character will be assigned to one of the classes based on the lowest Euclidean distance in the embedding space. A colored tint along the bottom edge of each canvas indicates the predicted class.
                 </p>
                 
                 <div id="few-shot-demo" class="giochino">

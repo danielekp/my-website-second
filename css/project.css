@@ -1,204 +1,516 @@
+/* ============================================================
+   Project detail pages (projects/*.html).
+   Loaded after styles.css and built on its tokens, so these
+   pages share the homepage's type, palette and 760px column.
+   ============================================================ */
+
+/* ---------- Page shell ---------- */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Header / nav ---------- */
+header,
+header nav {
+  height: 64px;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-menu a {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  border-bottom: none;
+}
+
+.nav-menu a:hover {
+  color: var(--accent);
+}
+
+.menu-bars {
+  display: none;
+  font-size: 1.25rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu { display: none; }
+  .menu-bars { display: block; }
+}
+
+/* Full-screen menu opened by the bars icon on small screens */
+.mobile-nav {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease-in-out;
+}
+
+.mobile-nav.active {
+  top: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav { transition: none; }
+}
+
+.close-icon {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.mobile-menu a {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--ink);
+  border-bottom: none;
+}
+
+.mobile-menu a:hover {
+  color: var(--accent);
+}
+
+/* ---------- Title block ---------- */
 .project-details {
-    padding: 2rem 0 4rem;
-  }
-  
-  .back-link {
-    display: inline-block;
-    margin-bottom: 2rem;
-  }
+  padding: 1rem 0 4rem;
+}
 
-  .back-link a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.9rem;
-    color: #6a6a6a;
-    border-bottom: none;
-    transition: color 0.2s ease;
-  }
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+}
 
-  .back-link a:hover {
-    color: #1a1a1a;
-    border-bottom: none;
-  }
+.back-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  border-bottom: none;
+}
 
-  .back-link i {
-    font-size: 0.8rem;
+.back-link a:hover {
+  color: var(--accent);
+}
+
+.back-link i {
+  font-size: 0.8rem;
+}
+
+.project-header {
+  margin-bottom: 2rem;
+}
+
+.project-header h1 {
+  font-family: "Fraunces", var(--serif);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 2.6rem);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: 0.9rem;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Article text ---------- */
+.project-content {
+  color: var(--ink-soft);
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+.project-content p {
+  margin-bottom: 1.2rem;
+}
+
+.project-content h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 2.75rem 0 1.1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.project-content h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 1.9rem 0 0.5rem;
+}
+
+.project-content strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Same emphasis as the highlighted terms in the homepage bio */
+.keywords {
+  color: var(--term);
+  font-weight: 500;
+}
+
+/* Lists (styles.css resets list markers site-wide) */
+.project-content ul,
+.project-content ol {
+  margin-bottom: 1.2rem;
+  padding-left: 1.35rem;
+}
+
+.project-content ul { list-style: disc; }
+.project-content ol { list-style: decimal; }
+.project-content ul ul { list-style: circle; }
+
+.project-content li {
+  margin-bottom: 0.35rem;
+  padding-left: 0.15rem;
+}
+
+.project-content li::marker {
+  color: var(--ink-mute);
+}
+
+.project-content li > ul,
+.project-content li > ol {
+  margin: 0.4rem 0 0.2rem;
+}
+
+/* Code */
+.project-content code {
+  font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+}
+
+.code-example {
+  margin: 1rem 0 1.5rem;
+}
+
+.code-example pre {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--rule-soft);
+  border-radius: 2px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+}
+
+.code-example pre code {
+  font-size: 1em;
+  background: none;
+  padding: 0;
+}
+
+/* Table (Yla configuration reference) */
+.config-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.92rem;
+}
+
+.config-table th,
+.config-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.55rem 1rem 0.55rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.config-table th {
+  font-weight: 500;
+  color: var(--ink);
+  border-bottom-color: var(--rule);
+}
+
+/* Download link styled like the homepage action buttons */
+.btn-secondary {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+/* ---------- Figures ---------- */
+.project-content img {
+  margin: 1.75rem 0;
+}
+
+/* Cover image at the top of the article */
+.project-content > img:first-child {
+  margin: 0 0 2.25rem;
+}
+
+.performance-chart,
+.architecture-diagram,
+.report-preview,
+.video-container {
+  margin: 1.75rem 0;
+}
+
+.performance-chart img,
+.architecture-diagram img,
+.report-preview img {
+  margin: 0;
+}
+
+.project-content .chart-caption {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.video-container video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+}
+
+/* Data figures break out of the text column on wide screens so their labels stay legible */
+.project-content .figure-wide {
+  --wide: min(960px, calc(100vw - 3rem));
+  width: var(--wide);
+  max-width: none;
+  margin-left: calc((100% - var(--wide)) / 2);
+}
+
+/* Art gallery: three tiles per row, each linking to the full-size image */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem 1rem;
+  align-items: start;
+  margin: 1.5rem 0 2rem;
+}
+
+.image-gallery a {
+  display: block;
+  border-bottom: none;
+}
+
+.project-content .image-gallery img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  transition: opacity 0.2s ease;
+}
+
+.image-gallery a:hover img {
+  opacity: 0.85;
+}
+
+.project-content .image-gallery p {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* Rows group pictures of the same shape, so phones keep three columns with a tighter gap */
+@media (max-width: 600px) {
+  .image-gallery {
+    gap: 1.25rem 0.75rem;
   }
-  
-  .project-header {
-    margin-bottom: 2rem;
-  }
-  
-  .project-header h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-  
-  .project-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 0.9rem;
-    color: #777779;
-  }
-  
-  .project-content {
-    line-height: 1.6;
-  }
-  
-  .project-content h2 {
-    font-size: 1.8rem;
-    font-weight: 500;
-    margin: 2rem 0 1rem;
-  }
-  
-  .project-content p {
-    margin-bottom: 1.2rem;
-  }
-  
-  .project-content a {
-    color: #4361ee;
-    transition: color 0.3s ease;
-  }
-  
-  .project-content a:hover {
-    color: #3a0ca3;
-    text-decoration: underline;
-  }
-  
-  .keywords {
-    color: #3a0ca3;
-    font-weight: 500;
-  }
-  
-  /* Few-Shot Demo Styles */
-  .giochino {
-    background-color: #f8f9fa;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    margin: 2rem 0;
-  }
-  
+}
+
+/* ---------- Few-shot demo (projects/fewshot.html) ---------- */
+.giochino {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin: 2rem 0;
+}
+
+/* The demo keeps its original width by breaking out of the text column on wide screens */
+#few-shot-demo {
+  --demo-width: min(968px, calc(100vw - 3rem));
+  width: var(--demo-width);
+  margin-left: calc((100% - var(--demo-width)) / 2);
+}
+
+.canvas-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.canvas-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.canvas-wrapper {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0.75rem;
+}
+
+.demo-canvas {
+  background-color: #ffffff;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.canvas-button {
+  padding: 0.5rem 1rem;
+  background-color: #e9ecef;
+  color: #495057;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.canvas-button:hover {
+  background-color: #dee2e6;
+}
+
+.canvas-instructions {
+  text-align: center;
+  margin: 1rem 0;
+  font-weight: 500;
+  color: #495057;
+}
+
+.canvas-divider {
+  height: 2px;
+  background-color: #dee2e6;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+.run-button {
+  display: block;
+  width: max-content;
+  margin: 2rem auto 0;
+  padding: 0.75rem 1.5rem;
+  background-color: #4361ee;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+}
+
+.run-button:hover {
+  background-color: #3a0ca3;
+  transform: translateY(-2px);
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  margin: 2rem auto 0;
+  border: 4px solid rgba(67, 97, 238, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #4361ee;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Three canvases side by side need ~880px; below that they stack */
+@media (max-width: 939px) {
   .canvas-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .canvas-column {
-    display: flex;
     flex-direction: column;
     align-items: center;
   }
-  
+
   .canvas-wrapper {
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 0.75rem;
+    max-width: 100%;
   }
-  
-  .demo-canvas {
-    background-color: #ffffff;
-    touch-action: none;
-    cursor: crosshair;
+}
+
+@media (min-width: 940px) {
+  .canvas-row {
+    flex-direction: row;
+    flex-wrap: nowrap;
   }
-  
-  .canvas-button {
-    padding: 0.5rem 1rem;
-    background-color: #e9ecef;
-    color: #495057;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
+
+  .canvas-column {
+    flex: 1;
+    max-width: 33.333%;
   }
-  
-  .canvas-button:hover {
-    background-color: #dee2e6;
+}
+
+/* ---------- Sidebar icon ---------- */
+/* Wide figures and the demo reach the page edge below ~1100px, where the fixed icon would overlap them */
+@media (max-width: 1100px) {
+  .social-sidebar {
+    display: none;
   }
-  
-  .canvas-instructions {
-    text-align: center;
-    margin: 1rem 0;
-    font-weight: 500;
-    color: #495057;
-  }
-  
-  .canvas-divider {
-    height: 2px;
-    background-color: #dee2e6;
-    margin: 1.5rem 0;
-    border-radius: 2px;
-  }
-  
-  .run-button {
-    display: block;
-    width: max-content;
-    margin: 2rem auto 0;
-    padding: 0.75rem 1.5rem;
-    background-color: #4361ee;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 500;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
-  }
-  
-  .run-button:hover {
-    background-color: #3a0ca3;
-    transform: translateY(-2px);
-  }
-  
-  .loader {
-    width: 40px;
-    height: 40px;
-    margin: 2rem auto 0;
-    border: 4px solid rgba(67, 97, 238, 0.3);
-    border-radius: 50%;
-    border-top: 4px solid #4361ee;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .canvas-row {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .canvas-wrapper {
-      max-width: 100%;
-    }
-    
-    .project-header h1 {
-      font-size: 2rem;
-    }
-  }
-  
-  /* Medium screens and above */
-  @media (min-width: 768px) {
-    .canvas-row {
-      flex-direction: row;
-      flex-wrap: nowrap;
-    }
-    
-    .canvas-column {
-      flex: 1;
-      max-width: 33.333%;
-    }
-  }
+}

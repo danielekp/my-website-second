@@ -3,11 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#fafaf7" />
     <meta name="description" content="SAE experiments for LLM interpretability" />
+    <link rel="canonical" href="https://danielepace.tech/projects/sae.html" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Daniele Pace" />
+    <meta property="og:url" content="https://danielepace.tech/projects/sae.html" />
+    <meta property="og:title" content="SAE for LLM Interpretability" />
+    <meta property="og:description" content="SAE experiments for LLM interpretability" />
+    <meta property="og:image" content="https://danielepace.tech/img/punkylirico.png" />
+    <meta property="og:image:width" content="480" />
+    <meta property="og:image:height" content="480" />
+    <meta property="og:image:alt" content="AI-generated artwork of a punk with a pink mohawk" />
+    <meta name="twitter:card" content="summary" />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,9 +29,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/project.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="../img/logo.png" type="image/png">
     
     <title>SAE for LLM Interpretability</title>
 
@@ -71,7 +82,7 @@
             </div>
             
             <div class="project-content">
-                <img src="../img/mondrian-mechinter.png" alt="Mechanistic Interpretability">
+                <img src="../img/hero/mondrian-mechinter.webp" alt="Mechanistic Interpretability">
                 
                 <h2>Overview</h2>
 
@@ -97,7 +108,7 @@
                     <li><strong>Activation Storage:</strong> I used 3,000,000 activations. A forward hook was registered on the target layer to capture its output.</li>
                     <li><strong>Processing:</strong> Texts were tokenized with a maximum sequence length of 128 tokens. Padding was applied to ensure uniform input shapes.</li>
                     <li><strong>Filtering:</strong> Crucially, only activations corresponding to actual tokens (not padding, as indicated by the attention mask) were stored. Additionally, activations corresponding to the <code>bos_token</code> (beginning-of-sequence) were excluded to focus on content-specific features. This alignment ensures that each stored activation vector corresponds to a specific token in the input.</li>
-                    <li><strong>Normalization:</strong> The collected activations were normalized. If <code>UNIT_NORM</code> is enabled (as in the my experiment), each activation vector was mean-centered and then normalized to have a unit L2 norm. This helps stabilize SAE training and ensures features aren't learned based on activation magnitude alone. The mean of the activations (<code>act_mean</code>) was saved for later use during inference/patching, to replicate training conditions.</li>
+                    <li><strong>Normalization:</strong> The collected activations were normalized. If <code>UNIT_NORM</code> is enabled (as in my experiment), each activation vector was mean-centered and then normalized to have a unit L2 norm. This helps stabilize SAE training and ensures features aren't learned based on activation magnitude alone. The mean of the activations (<code>act_mean</code>) was saved for later use during inference/patching, to replicate training conditions.</li>
                 </ul>
 
                 <h3>3. SAE Configuration</h3>
@@ -105,7 +116,7 @@
                     The Sparse Autoencoder was designed with the following parameters:
                 </p>
                 <ul>
-                    <li><strong>Expansion Factor:</strong> An <code>SAE_EXPANSION_FACTOR</code> of 8 was used, resulting in an SAE hidden dimension of 9216 (1152 * 8). A larger hidden dimension allows the SAE to learn a richer set of disentangled features, but it makes to training mroe expensive.</li>
+                    <li><strong>Expansion Factor:</strong> An <code>SAE_EXPANSION_FACTOR</code> of 8 was used, resulting in an SAE hidden dimension of 9216 (1152 * 8). A larger hidden dimension allows the SAE to learn a richer set of disentangled features, but it makes training more expensive.</li>
                     <li><strong>L1 Coefficient:</strong> I chose a value of 3e-4, to enforce sparsity in the SAE's hidden layer. This penalty encourages most hidden neurons to be zero for any given input, making the active ones more interpretable. The value was decided after several experiments, so it is a valid value specific for my setup.</li>
                 </ul>
 
@@ -115,7 +126,7 @@
                 </p>
                 <ul>
                     <li><strong>Batch Size:</strong> 512.</li>
-                    <li><strong>Learning Rate:</strong> An initial alue of 3e-3.</li>
+                    <li><strong>Learning Rate:</strong> An initial value of 3e-3.</li>
                     <li><strong>Epochs:</strong> 300.</li>
                     <li><strong>Learning Rate Schedule:</strong> A linear warmup for the first 500 steps, followed by a cosine decay down to 0.5 of the base LR over the remaining steps. This schedule helps in stabilizing training at the beginning and fine-tuning towards the end.</li>
                     <li><strong>Loss Function:</strong> The loss was a combination of Mean Squared Error (MSE) between the original and reconstructed activations, and an L1 penalty on the SAE's encoded (hidden) activations.
@@ -137,7 +148,7 @@
                             <li><strong>Strength Distribution:</strong> Visualized feature strengths (e.g., max activation per feature) using 2D heatmaps and 3D bar plots to understand the overall distribution and identify salient features.</li>
                         </ul>
                     </li>
-                    <li><strong>Interpretability Analysis (Qualitative):</strong> The primary evaluation was qualitative, examining the top k features (based on their activation strenght) to identify semantic meaning. For example, does a feature consistently activate on specific grammatical structures, parts of speech, semantic concepts (e.g., "dates," "locations," "negation")?</li>
+                    <li><strong>Interpretability Analysis (Qualitative):</strong> The primary evaluation was qualitative, examining the top k features (based on their activation strength) to identify semantic meaning. For example, does a feature consistently activate on specific grammatical structures, parts of speech, semantic concepts (e.g., "dates," "locations," "negation")?</li>
                 </ul>
 
                 <h2>Results and Analysis</h2>
@@ -154,7 +165,7 @@
                     </a>
                 </div>
                 <ul>
-                    <li><strong>Feature Sparsity:</strong> A significant number of SAE features were "dead" or rarely active. For instance (in the report at page 6), 6788 features out of 9216 (73.7%) were dead, with an average of 1130.9 features were active per sample. This means on average ~12% of features are active for any given input.</li>
+                    <li><strong>Feature Sparsity:</strong> A significant number of SAE features were "dead" or rarely active. For instance (in the report at page 6), 6788 features out of 9216 (73.7%) were dead, with an average of 1130.9 features active per sample. This means on average ~12% of features are active for any given input.</li>
                     <li><strong>Semantic Clustering:</strong> Several SAE features appeared to capture distinct semantic or syntactic concepts. For example:
                         <ul>
                             <li><strong>Feature 1177 (Report Page 7):</strong> Frequently activates on tokens that appear to be person names or entities within a list or descriptive context (e.g., "Khan as Gabbar Singh", "Francisco de Solis Folch de Cardona").</li>
@@ -163,7 +174,7 @@
                             <li><strong>Feature 74 (Report Page 12):</strong> Activates on the tokens "s" after the dates (e.g. 1930s, 1980s)</li>
                             <li><strong>Feature 4263 (Report Page 13):</strong> Activates on the tokens corresponding to numbers, when indicating the number of the month (e.g. October 8, March 6) </li>
                             <li><strong>Feature 2493 (Report Page 20):</strong> Activates on the tokens "s" when used in Saxon genitive</li>
-                            <li><strong>Feature 1881 (Report Page 21):</strong> Activates on the tokens corresponding to the cardinal numbers (e.g. rd, st, eth, th) </li>
+                            <li><strong>Feature 1881 (Report Page 21):</strong> Activates on the tokens corresponding to the ordinal numbers (e.g. rd, st, eth, th) </li>
                             <li><strong>Feature 799 (Report Page 23):</strong> Activates on the tokens corresponding to numbers, representing the unit number in dates (e.g. 1 in 1931, 4 in 2004) </li>
                             <li><strong>Feature 334 (Report Page 25):</strong> Activates on the tokens "first" </li>
                             <li><strong>Feature 3384 (Report Page 29):</strong> Activates on the tokens "also" </li>
@@ -173,7 +184,7 @@
                             <li><strong>Feature 8468 (Report Page 35):</strong> Activates on the tokens "not" </li>
                             <li><strong>Feature 5691 (Report Page 37):</strong> Activates on the tokens "the" </li>
                             <li><strong>Feature 4843 (Report Page 45):</strong> Activates on the tokens "only" </li>
-                            <li><strong>Feature 6357 (Report Page 46):</strong> Activates on the tokens "'" when using to indicate the genitive ('s in Jhon's personal life)</li>
+                            <li><strong>Feature 6357 (Report Page 46):</strong> Activates on the tokens "'" when used to indicate the genitive ('s in John's personal life)</li>
                             <li><strong>Feature 201 (Report Page 47):</strong> Activates on the tokens "to" </li>
                             <li><strong>Feature 3089 (Report Page 50):</strong> Activates on the tokens "a" or "an"</li>
                             <li><strong>Feature 1715 (Report Page 55):</strong> Activates on the tokens representing a measure for distance, specifically "km", "miles", and "mi" </li>
@@ -181,14 +192,13 @@
                             <li><strong>Feature 7770 (Report Page 63):</strong> Activates on the tokens "in" or "inch"</li>
                             <li><strong>Feature 6897 (Report Page 72):</strong> Activates on the tokens representing surnames (e.g. Weston, Ross, Smith) </li>
                             <li><strong>Feature 5058 (Report Page 74):</strong> Activates on the tokens related to the world wars (e.g. "war", "I", "II") </li>
-                            <li><strong>Feature 7154 (Report Page 78):</strong> Activates on the tokens "," when follows the word "However"</li>
+                            <li><strong>Feature 7154 (Report Page 78):</strong> Activates on the tokens "," when it follows the word "However"</li>
                             <li><strong>Feature 5668 (Report Page 82):</strong> Activates on the tokens representing high measures (e.g. "lot", "much") </li>
                             <li><strong>Feature 2508 (Report Page 83):</strong> Activates on the tokens derived from "die" (e.g. "died", "die", "dies")</li>
                             <li><strong>Feature 3853 (Report Page 88):</strong> Activates on the tokens ")" when it follows some unit of measure</li>
                             <li><strong>Feature 8458 (Report Page 90):</strong> Activates on the tokens representing the third person of the possessive adjectives and pronouns </li>
                             <li><strong>Feature 6097 (Report Page 94):</strong> Activates on the tokens representing a measure for distance (shorter than previous tokens, e.g. "feet" or "meter")</li>
                             <li><strong>Feature 5099 (Report Page 98):</strong> Activates on the tokens "was"</li>
-                            <li><strong>Feature 3853 (Report Page 88):</strong> Activates on the tokens ")" when it follows some unit of measure</li>             
                         </ul>
                     </li>
                 </ul>

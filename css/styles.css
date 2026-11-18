@@ -19,6 +19,7 @@ html {
   --rule: rgba(0, 0, 0, 0.12);
   --rule-soft: rgba(0, 0, 0, 0.06);
   --accent: #6a4a3a;
+  --term: #4a7a4a;
   --serif: "EB Garamond", "Iowan Old Style", "Apple Garamond", Garamond, "Times New Roman", serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
@@ -102,7 +103,7 @@ ul, ol {
 }
 
 .bio .term {
-  color: #4a7a4a;
+  color: var(--term);
   font-weight: 500;
 }
 
@@ -225,22 +226,32 @@ ul, ol {
   border-color: var(--ink);
 }
 
+/* Phones: small thumbnail beside the title; description and links run full width below */
 @media (max-width: 600px) {
   .project {
-    grid-template-columns: 1fr;
-    gap: 0.9rem;
+    grid-template-columns: 96px 1fr;
+    column-gap: 1rem;
+    row-gap: 0.7rem;
+    align-items: center;
     padding: 1.4rem 0;
   }
-  .project-thumb {
-    width: 100%;
+  .project-body {
+    display: contents;
   }
   .project-thumb img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 2;
+    width: 96px;
+    height: 64px;
   }
   .project-title {
     font-size: 1.1rem;
+    margin-bottom: 0;
+  }
+  .project-desc,
+  .project-actions {
+    grid-column: 1 / -1;
+  }
+  .project-actions {
+    margin-top: 0.15rem;
   }
 }
 
@@ -272,11 +283,32 @@ ul, ol {
   border-bottom: none;
 }
 
+/* Seven links: tighten the spacing on phones so the row keeps to one line */
+@media (max-width: 420px) {
+  .contact-bar {
+    gap: 1rem;
+  }
+}
+
+.contact-bar .cv-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 .contact-bar .hf-icon,
-.contact-bar .lb-icon {
+.contact-bar .lb-icon,
+.contact-bar .lw-icon {
   display: block;
   opacity: 0.85;
   transition: opacity 0.2s ease;
+}
+
+/* Solid black artwork: lowered opacity brings it to the same grey as the font icons */
+.contact-bar .lw-icon {
+  width: 1.25rem;
+  height: auto;
+  opacity: 0.7;
 }
 
 .contact-bar .hf-icon {
@@ -290,7 +322,8 @@ ul, ol {
 }
 
 .contact-bar a:hover .hf-icon,
-.contact-bar a:hover .lb-icon {
+.contact-bar a:hover .lb-icon,
+.contact-bar a:hover .lw-icon {
   opacity: 1;
 }
 
@@ -326,119 +359,22 @@ ul, ol {
   opacity: 1;
 }
 
-@media screen and (max-width: 768px) {
+/* Hidden until the 760px column leaves room beside it (it overlapped the text below ~840px) */
+@media screen and (max-width: 880px) {
   .social-sidebar {
     display: none;
   }
 }
 
 /* ============================================================
-   Legacy classes — kept so the existing projects/*.html pages
-   continue to render correctly. Do not remove unless those
-   pages are updated.
+   Legacy classes. The layout of the projects/*.html pages now
+   lives in project.css; what remains here is the canvas overlay
+   used by the few-shot demo, plus older helper classes.
    ============================================================ */
-
-/* Container used by project detail pages */
-.container {
-  width: 100%;
-  padding: 0 1rem;
-  margin: 0 auto;
-}
-
-@media (min-width: 576px) { .container { max-width: 540px; } }
-@media (min-width: 768px) { .container { max-width: 720px; } }
-@media (min-width: 992px) { .container { max-width: 960px; } }
-@media (min-width: 1200px) { .container { max-width: 1000px; } }
-
-/* Header / nav used by project detail pages */
-header:not(.intro) {
-  background: transparent;
-  height: 80px;
-}
-
-header:not(.intro) nav {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-menu a {
-  color: var(--ink-soft);
-  font-size: 0.95rem;
-  border-bottom: none;
-}
-
-.nav-menu a:hover {
-  color: var(--accent);
-}
-
-.menu-bars {
-  display: none;
-  font-size: 1.4rem;
-  cursor: pointer;
-  color: var(--ink);
-}
-
-@media screen and (max-width: 768px) {
-  .nav-menu { display: none; }
-  .menu-bars { display: block; }
-}
-
-.mobile-nav {
-  background: #151418;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: -100%;
-  z-index: 999;
-  transition: 0.3s ease-in-out;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.mobile-nav.active {
-  opacity: 1;
-  top: 0;
-  pointer-events: auto;
-}
-
-.close-icon {
-  font-size: 2rem;
-  color: #fff;
-  position: absolute;
-  right: 2rem;
-  top: 2rem;
-  cursor: pointer;
-}
-
-.mobile-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-}
-
-.mobile-menu a {
-  color: #fff;
-  font-size: 1.5rem;
-  border-bottom: none;
-}
 
 /* Project detail modal/content classes */
 .modal_content { padding: 10px; }
 .proj_title { font-weight: 600; font-size: 1.8rem; font-family: var(--serif); }
-.keywords { font-style: italic; color: var(--ink-soft); }
 
 /* Buttons retained for project detail pages */
 .btn-group {

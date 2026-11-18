@@ -6,9 +6,18 @@
     <meta name="theme-color" content="#fafaf7" />
     <meta name="description" content="Daniele Pace — personal portfolio" />
     <meta name="author" content="Daniele Pace" />
+    <link rel="canonical" href="https://danielepace.tech/" />
 
-    <meta name="title" property="og:title" content="Daniele Pace" />
-    <meta name="description" property="og:description" content="Personal portfolio of Daniele Pace" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Daniele Pace" />
+    <meta property="og:url" content="https://danielepace.tech/" />
+    <meta property="og:title" content="Daniele Pace" />
+    <meta property="og:description" content="Personal portfolio of Daniele Pace" />
+    <meta property="og:image" content="https://danielepace.tech/img/punkylirico.png" />
+    <meta property="og:image:width" content="480" />
+    <meta property="og:image:height" content="480" />
+    <meta property="og:image:alt" content="AI-generated artwork of a punk with a pink mohawk" />
+    <meta name="twitter:card" content="summary" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,13 +29,38 @@
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Daniele Pace",
-          "url": "https://danielepace.tech/"
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "@id": "https://danielepace.tech/#website",
+              "name": "Daniele Pace",
+              "url": "https://danielepace.tech/"
+            },
+            {
+              "@type": "Person",
+              "@id": "https://danielepace.tech/#person",
+              "name": "Daniele Pace",
+              "url": "https://danielepace.tech/",
+              "sameAs": [
+                "https://github.com/danielekp",
+                "https://www.linkedin.com/in/daniele-k-pace/",
+                "https://www.lesswrong.com/users/daniele-pace",
+                "https://huggingface.co/Daniele"
+              ]
+            }
+          ]
         }
     </script>
 
     <title>Daniele Pace</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVFX5E2ERE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BVFX5E2ERE', { send_page_view: true });
+    </script>
 </head>
 <body>
     <main class="page">
@@ -34,18 +68,18 @@
             <h1 class="name">Daniele Pace</h1>
 
             <figure class="portrait">
-                <img src="img/nepas.png" alt="Ceci n'est pas une pipe — personal motif" />
+                <img src="img/hero/nepas.webp" width="1922" height="608" alt="Ceci n'est pas une pipe — personal motif" />
             </figure>
         </header>
 
         <section class="bio" id="about">
             <p>
-                Currently, I'm Research Manager for the fifth <a href="https://caish.org/mars">MARS cohort</a>, and finishing my research project on CoT (un)faithfulness detection using <span class="term">attention probes</span> at <a href="https://www.lasrlabs.org/">LASR Labs</a>, supervised by <a href="https://scholar.google.com/citations?user=l2E0LR4AAAAJ&hl=en">Noah Y. Siegel</a>. I've also been part of the previous iteration of MARS, working on <span class="term"><a href="https://www.lesswrong.com/posts/nKfmimhTKCsDM2Hwh/harmfulness-directions-in-olmo-1">harmfulness representation</a></span> in different training checkpoint stages, under the mentorship of <a href="https://www.lorenzopacchiardi.me/">Lorenzo Pacchiardi</a>. Before that, I spent almost 4 years in industry research, as part of the Prediction for Autonomous Driving research team at <a href="https://www.stellantis.com/en">Stellantis</a>. I hold a bachelor's and master's degrees from <a href="https://www.polito.it/">Politecnico di Torino</a>, with the final two semesters spent at <a href="https://www.aalto.fi/en">Aalto University</a>, where I worked on my final thesis under the supervision of <a href="https://users.aalto.fi/~lehtinj7/">Jaakko Lethinen</a>.
+                Currently, I'm Research Manager for the fifth <a href="https://caish.org/mars">MARS cohort</a>, and finishing my research project on CoT (un)faithfulness detection using <span class="term">attention probes</span> at <a href="https://www.lasrlabs.org/">LASR Labs</a>, supervised by <a href="https://scholar.google.com/citations?user=l2E0LR4AAAAJ&hl=en">Noah Y. Siegel</a>. I've also been part of the previous iteration of MARS, working on <span class="term"><a href="https://www.lesswrong.com/posts/nKfmimhTKCsDM2Hwh/harmfulness-directions-in-olmo-1">harmfulness representation</a></span> in different training checkpoint stages, under the mentorship of <a href="https://www.lorenzopacchiardi.me/">Lorenzo Pacchiardi</a>. Before that, I spent almost 4 years in industry research, as part of the Prediction for Autonomous Driving research team at <a href="https://www.stellantis.com/en">Stellantis</a>. I hold bachelor's and master's degrees from <a href="https://www.polito.it/">Politecnico di Torino</a>, with the final two semesters spent at <a href="https://www.aalto.fi/en">Aalto University</a>, where I worked on my final thesis under the supervision of <a href="https://users.aalto.fi/~lehtinj7/">Jaakko Lehtinen</a>.
                 <br><br>
                 Since the beginning of 2025 I've been interested in AI safety, eventually making it my full-time job. My research spans different areas, with <span class="term">mech interp</span> at its core. I believe that understanding the structure of LLMs' internal representations, and how they produce intelligent behaviors, is essential for <span class="term">alignment</span>; moreover, studying a kind of intelligence quite unlike ours is intellectually fascinating. I'm particularly interested in applying white-box methods to <span class="term">control</span> and monitoring. I'm against every simplification of complex concepts like morality, <i>alignment</i>, <i>feature</i>.
             </p>
 
-            <nav class="contact-bar" aria-label="Contact">
+            <nav class="contact-bar" id="contact" aria-label="Contact">
                 <a href="mailto:danielekpace@gmail.com" aria-label="Email" title="Email">
                     <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                 </a>
@@ -54,6 +88,10 @@
                 </a>
                 <a href="https://www.linkedin.com/in/daniele-k-pace/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
                     <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+                <a class="cv-link" href="cv_danielepace.pdf" target="_blank" rel="noopener noreferrer" aria-label="CV (PDF)" title="CV (PDF)">CV</a>
+                <a href="https://www.lesswrong.com/users/daniele-pace" target="_blank" rel="noopener noreferrer" aria-label="LessWrong" title="LessWrong">
+                    <img src="img/lesswrong.png" alt="" aria-hidden="true" class="lw-icon" />
                 </a>
                 <a href="https://huggingface.co/Daniele" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face" title="Hugging Face">
                     <img src="img/hf.svg" alt="" aria-hidden="true" class="hf-icon" />
@@ -70,7 +108,7 @@
             <ol class="project-list">
                 <li class="project">
                     <a class="project-thumb" href="projects/harmfulness.html" aria-hidden="true" tabindex="-1">
-                        <img src="img/olmo-harm-directions.jpg" alt="" loading="lazy" />
+                        <img src="img/thumbs/olmo-harm-directions.webp" width="144" height="96" alt="" loading="lazy" />
                     </a>
                     <div class="project-body">
                         <h3 class="project-title">
@@ -89,7 +127,7 @@
 
                 <li class="project">
                     <a class="project-thumb" href="projects/dantebert.html" aria-hidden="true" tabindex="-1">
-                        <img src="img/dantebert.jpg" alt="" loading="lazy" />
+                        <img src="img/thumbs/dantebert.webp" width="144" height="96" alt="" loading="lazy" />
                     </a>
                     <div class="project-body">
                         <h3 class="project-title">
@@ -107,7 +145,7 @@
 
                 <li class="project">
                     <a class="project-thumb" href="projects/sae.html" aria-hidden="true" tabindex="-1">
-                        <img src="img/mondrian-mechinter.png" alt="" loading="lazy" />
+                        <img src="img/thumbs/mondrian-mechinter.webp" width="144" height="96" alt="" loading="lazy" />
                     </a>
                     <div class="project-body">
                         <h3 class="project-title">
@@ -124,7 +162,7 @@
 
                 <li class="project">
                     <a class="project-thumb" href="projects/yla.html" aria-hidden="true" tabindex="-1">
-                        <img src="img/yla.png" alt="" loading="lazy" />
+                        <img src="img/thumbs/yla.webp" width="144" height="96" alt="" loading="lazy" />
                     </a>
                     <div class="project-body">
                         <h3 class="project-title">
@@ -141,7 +179,7 @@
 
                 <li class="project">
                     <a class="project-thumb" href="projects/solrquery.html" aria-hidden="true" tabindex="-1">
-                        <img src="img/semanticsearch.png" alt="" loading="lazy" />
+                        <img src="img/thumbs/semanticsearch.webp" width="144" height="96" alt="" loading="lazy" />
                     </a>
                     <div class="project-body">
                         <h3 class="project-title">
@@ -157,7 +195,7 @@
 
                 <li class="project">
                     <a class="project-thumb" href="projects/nonlinearclimbing.html" aria-hidden="true" tabindex="-1">
-                        <img src="img/nonlinear.jpg" alt="" loading="lazy" />
+                        <img src="img/thumbs/nonlinear.webp" width="144" height="96" alt="" loading="lazy" />
                     </a>
                     <div class="project-body">
                         <h3 class="project-title">
@@ -174,7 +212,7 @@
 
                 <li class="project">
                     <a class="project-thumb" href="projects/ciccionet.html" aria-hidden="true" tabindex="-1">
-                        <img src="img/gestures_recognition_article.jpg" alt="" loading="lazy" />
+                        <img src="img/thumbs/gestures_recognition_article.webp" width="144" height="96" alt="" loading="lazy" />
                     </a>
                     <div class="project-body">
                         <h3 class="project-title">
@@ -191,7 +229,7 @@
 
                 <li class="project">
                     <a class="project-thumb" href="projects/fewshot.html" aria-hidden="true" tabindex="-1">
-                        <img src="img/few.jpg" alt="" loading="lazy" />
+                        <img src="img/thumbs/few.webp" width="144" height="96" alt="" loading="lazy" />
                     </a>
                     <div class="project-body">
                         <h3 class="project-title">
@@ -208,7 +246,7 @@
 
                 <li class="project">
                     <a class="project-thumb" href="projects/art.html" aria-hidden="true" tabindex="-1">
-                        <img src="img/generative.jpg" alt="" loading="lazy" />
+                        <img src="img/thumbs/generative.webp" width="144" height="96" alt="" loading="lazy" />
                     </a>
                     <div class="project-body">
                         <h3 class="project-title">
