@@ -293,7 +293,7 @@ ul, ol {
 
 /* Solid black artwork: lowered opacity brings it to the same grey as the font icons */
 .contact-bar .lw-icon {
-  width: 1.05rem;
+  width: 1.15rem;
   height: auto;
   opacity: 0.7;
 }
