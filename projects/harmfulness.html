@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Harmfulness directions across OLMo 3 training checkpoints" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/project.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../img/logo.png" type="image/png">
+
+    <title>Harmfulness Directions in OLMo</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVFX5E2ERE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BVFX5E2ERE', { send_page_view: true });
+    </script>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+                    <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+                </ul>
+                <div class="menu-bars" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="close-icon" id="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="mobile-menu">
+            <li class="menu-item"><a href="../index.html#projects">projects</a></li>
+            <li class="menu-item"><a href="../index.html#contact">contacts</a></li>
+        </ul>
+    </div>
+
+    <!-- Project Content -->
+    <section class="project-details">
+        <div class="container">
+            <div class="back-link">
+                <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            </div>
+
+            <div class="project-header">
+                <h1>Harmfulness Directions in OLMo</h1>
+                <div class="project-meta">
+                    <span class="project-date">AI Safety Research</span>
+                    <span>MARS, with Bryan Maruyama, mentored by <a href="https://www.lorenzopacchiardi.me/">Lorenzo Pacchiardi</a></span>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <img src="../img/olmo-harm-directions.jpg" alt="Checkpoint-by-checkpoint cosine similarity of the general harm direction across OLMo 3 training">
+
+                <h2>Overview</h2>
+                <p>
+                    This project studies how harmfulness representations emerge and evolve during the training of a Large Language Model. We extracted linear activation directions for seven harmfulness subcategories (discrimination, drug abuse, financial crime, hate speech, non-violent crime, privacy violation, and violence) plus a general harm category, across 39 checkpoints of OLMo 3 7B spanning from initialization to the final Instruct model. Each direction was evaluated as a linear probe and as a steering vector, tracking its geometry, probing performance, and behavioral effect throughout pretraining, mid-training, long-context training, and post-training. The full write-up is available <a href="https://www.lesswrong.com/posts/nKfmimhTKCsDM2Hwh/harmfulness-directions-in-olmo-1" target="_blank" rel="noopener noreferrer">on LessWrong</a>.
+                </p>
+
+                <h2>Experimental Setup</h2>
+
+                <h3>1. Model and Checkpoints</h3>
+                <p>
+                    We used 39 non-uniformly spaced checkpoints of OLMo 3 7B: dense early in pretraining (every 1k steps), sparser later, plus the base, SFT, DPO, and Instruct variants. OLMo was chosen because it is one of the few performant models with fully open intermediate checkpoints.
+                </p>
+
+                <h3>2. Datasets</h3>
+                <p>
+                    Harmful prompts come from the BeaverTails dataset, with 1,000 training samples per subcategory; Alpaca prompts serve as the safe class. For evaluation we added lexically rewritten versions of the test prompts and out-of-distribution datasets (MaliciousInstruct, AdvBench, HarmBench).
+                </p>
+
+                <h3>3. Direction Extraction</h3>
+                <p>
+                    For each checkpoint and subcategory, the direction is the vector from the safe centroid to the harmful centroid of residual stream activations at <span class="keywords">layer 15</span>, selected by optimizing AUROC for general harmfulness on the Instruct checkpoint and kept fixed across all experiments.
+                </p>
+
+                <h3>4. Evaluation Strategy</h3>
+                <ul>
+                    <li><strong>Probing:</strong> AUROC on in-distribution, lexically rewritten, and out-of-distribution datasets, with random-label and truthfulness controls.</li>
+                    <li><strong>Geometry:</strong> cosine similarity of directions across checkpoints and across subcategories; centroid drift and direction magnitudes.</li>
+                    <li><strong>Steering:</strong> residual stream intervention <code>activation + &lambda; &times; direction</code> on the Instruct model, with refusal rate and incoherence measured by an LLM judge.</li>
+                </ul>
+
+                <h2>Results and Analysis</h2>
+
+                <h3>Probing</h3>
+                <p>
+                    In-distribution AUROC is high (~0.9) even at initialization, before any training. The signal cannot be semantic: it reflects superficial lexical and structural cues that already separate the datasets in the random model's activation space. On lexically rewritten prompts, early-checkpoint AUROC drops substantially for most subcategories, while post-training checkpoints recover near-ceiling performance, indicating genuinely learned generalization.
+                </p>
+                <img src="../img/olmo_auroc_modified.png" alt="Validation AUROC across training stages on lexically modified in-distribution data">
+                <p>
+                    Out-of-distribution evaluations confirm that AUROC can be driven by several kinds of non-semantic signals: token-level cues, structural and formatting patterns, and dataset-level regularities. In-distribution separability alone says little about meaningful structure.
+                </p>
+
+                <h3>Geometry</h3>
+                <p>
+                    The general harm direction does not drift uniformly: it shifts in discrete phases aligned with training stages, with the largest single jump at the base-to-SFT transition. The pattern is nearly identical for every subcategory, suggesting global training dynamics rather than concept-specific learning.
+                </p>
+                <p>
+                    The subcategories occupy a shared yet structured space and never collapse into a single harmfulness axis. Violence, non-violent crime, drug/weapons, and financial crime form a tight cluster close to the general harm direction; privacy is a persistent outlier; hate speech and discrimination sit in between. This structure is established within the first few thousand steps and is later refined, not reorganized.
+                </p>
+                <img src="../img/olmo_pairwise_similarity.png" alt="Pairwise cosine similarity between harmfulness subcategory directions at six representative checkpoints">
+                <img src="../img/olmo_subcat_general.png" alt="Cosine similarity of each subcategory direction to the general harm direction during early pretraining">
+                <p>
+                    Centroid drift, centroid geometry, and direction magnitudes all point the same way: the scale of the directions is set early in pretraining, after which changes are mostly rotational and synchronized across categories.
+                </p>
+
+                <h3>Steering</h3>
+                <p>
+                    We steered the Instruct model with directions from each checkpoint (&lambda; from -2 to +2, 250 prompts, baseline refusal 31%). Early-checkpoint directions either do nothing or break the model into incoherence. From mid-pretraining (~step 100k) they become usable, and post-training directions are by far the most effective: positive steering with the Instruct direction drives refusal up to 98%, while negative steering yields more modest reductions.
+                </p>
+                <img src="../img/olmo_steering.png" alt="Refusal rate when steering OLMo 3 7B Instruct with directions from different checkpoints and scales">
+                <p>
+                    Cross-checkpoint probing shows the same boundary: directions extracted from ~step 80k onward transfer well through post-training. The final harmfulness directions are not created from scratch during alignment; they become broadly recognizable in mid-pretraining.
+                </p>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>Harmfulness is not a single unified axis: a shared general-harm component coexists with persistent subcategory-specific structure.</li>
+                    <li>High in-distribution AUROC is an unreliable indicator of semantic representation; it can be driven entirely by lexical, structural, and dataset-level shortcuts.</li>
+                    <li>Representational change is synchronized across subcategories and happens in phases between training stages, pointing to global rather than concept-specific dynamics.</li>
+                    <li>Early training sets the scale and coarse geometry of the directions; later training mostly rotates them. Only directions from mid-pretraining onward steer behavior effectively.</li>
+                </ul>
+
+                <h2>GitHub Repository</h2>
+                <p>
+                    <a href="https://github.com/Harmfulness-Exploration/harmfulness_direction_entanglement" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View the code on GitHub
+                    </a>
+                </p>
+                <p>
+                    <a href="https://harmfulness-exploration.github.io/harmfulness_direction_entanglement/" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-play"></i> Try the interactive demo
+                    </a>
+                </p>
+
+                <h2>Full Post</h2>
+                <p>
+                    <a href="https://www.lesswrong.com/posts/nKfmimhTKCsDM2Hwh/harmfulness-directions-in-olmo-1" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-book-open"></i> Read the full post on LessWrong
+                    </a>
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Social fixed sidebar -->
+    <div class="social-sidebar">
+        <ul>
+            <li class="item">
+                <a href="https://open.spotify.com/playlist/4jOpQ4t8Ii93fKvBJb6jUr?si=559ad34109ac4b93" target="_blank" rel="noopener noreferrer">
+                    <img src="../img/logo.png" alt="Spotify">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/project.js"></script>
+</body>
+</html>

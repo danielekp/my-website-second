@@ -12,7 +12,7 @@ html {
 }
 
 :root {
-  --bg: #fafaf7;
+  --bg: #f3f2ec;
   --ink: #1a1a1a;
   --ink-soft: #4a4a4a;
   --ink-mute: #8a8a8a;
@@ -70,11 +70,12 @@ ul, ol {
 }
 
 .name {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(2.4rem, 5vw, 3rem);
-  letter-spacing: 0.005em;
-  line-height: 1.1;
+  font-family: "Fraunces", var(--serif);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: clamp(2.1rem, 4.4vw, 2.6rem);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
   margin-bottom: 2.5rem;
 }
 
