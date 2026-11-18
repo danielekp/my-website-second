@@ -283,19 +283,6 @@ ul, ol {
   border-bottom: none;
 }
 
-/* Seven links: tighten the spacing on phones so the row keeps to one line */
-@media (max-width: 420px) {
-  .contact-bar {
-    gap: 1rem;
-  }
-}
-
-.contact-bar .cv-link {
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
 .contact-bar .hf-icon,
 .contact-bar .lb-icon,
 .contact-bar .lw-icon {
@@ -306,7 +293,7 @@ ul, ol {
 
 /* Solid black artwork: lowered opacity brings it to the same grey as the font icons */
 .contact-bar .lw-icon {
-  width: 1.25rem;
+  width: 1.05rem;
   height: auto;
   opacity: 0.7;
 }
