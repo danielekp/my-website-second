@@ -1,27 +1,3 @@
-// DOM Elements
-const mobileMenu = document.getElementById('mobile-menu');
-const mobileNav = document.getElementById('mobile-nav');
-const closeMenu = document.getElementById('close-menu');
-
-// Mobile menu toggle
-mobileMenu.addEventListener('click', () => {
-    mobileNav.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
-});
-
-closeMenu.addEventListener('click', () => {
-    mobileNav.classList.remove('active');
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
-});
-
-// Close mobile menu when a link is clicked
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileNav.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-});
-
 // ONNX Demo Canvas functionality (for project2.html - Few Shot Learning)
 document.addEventListener('DOMContentLoaded', function() {
     // Only initialize canvas functionality on the few-shot learning page
